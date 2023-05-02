@@ -1,0 +1,23 @@
+RUNNING CHAIN OF THOUGHTS...:
+ORIGINAL TEXT:
+Objective: For a cancer patient with the following medication, create a strategy to reduce the risk of side effects: escitalopram, lenvatinib, ramipril, ibuprofen, oxycodone. 
+
+
+LIST OF REQSEARCH QUESTIONS:
+1: Research Question 1: How does escitalopram affect side effects in cancer patients?
+2: Research Question 2: What is the relationship between lenvatinib and risk of side effects in cancer patients?
+3: Research Question 3: To what extent do ramipril, ibuprofen, and oxycodone influence the risk of side effects in cancer patients?
+
+LIST OF HYPOTHESIS:
+
+RESEARCH QUESTION 1:
+NULL HYPOTHESIS (H0): Escitalopram has no effect on side effects in cancer patients.
+ALTERNATE HYPOTHESIS (H1): Escitalopram has a significant effect on side effects in cancer patients.
+
+RESEARCH QUESTION 2:
+NULL HYPOTHESIS (H0): H0: There is no relationship between lenvatinib and risk of side effects in cancer patients.
+ALTERNATE HYPOTHESIS (H1): H1: There is a relationship between lenvatinib and risk of side effects in cancer patients.
+
+RESEARCH QUESTION 3:
+NULL HYPOTHESIS (H0): H0: There is no relationship between ramipril, ibuprofen, and oxycodone and the risk of side effects in cancer patients.
+ALTERNATE HYPOTHESIS (H1): H1: Ramipril, ibuprofen, and oxycodone influence the risk of side effects in cancer patients.

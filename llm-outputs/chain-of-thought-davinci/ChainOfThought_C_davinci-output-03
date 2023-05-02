@@ -1,0 +1,23 @@
+RUNNING CHAIN OF THOUGHTS...:
+ORIGINAL TEXT:
+Objective: Find novel scientific hypotheses worth pursuing that combine Deep Learning with clinical research on liver cancer. 
+
+
+LIST OF REQSEARCH QUESTIONS:
+1: Research Question 1: What is the impact of Deep Learning on clinical research outcomes for liver cancer?
+2: Research Question 2: How do different Deep Learning models compare in terms of their effectiveness in predicting clinical outcomes related to liver cancer?
+3: Research Question 3: How does combining Deep Learning with traditional clinical research methods affect the accuracy of predicting outcomes for liver cancer patients?
+
+LIST OF HYPOTHESIS:
+
+RESEARCH QUESTION 1:
+NULL HYPOTHESIS (H0): Null Hypothesis (H0): Deep Learning has no impact on clinical research outcomes for liver cancer.
+ALTERNATE HYPOTHESIS (H1): Alternate Hypothesis (H1): Deep Learning has a positive impact on clinical research outcomes for liver cancer.
+
+RESEARCH QUESTION 2:
+NULL HYPOTHESIS (H0): All Deep Learning models are equally effective in predicting clinical outcomes related to liver cancer.
+ALTERNATE HYPOTHESIS (H1): Null Hypothesis (H0): There is no difference in the effectiveness of Deep Learning models in predicting clinical outcomes related to liver cancer.
+
+RESEARCH QUESTION 3:
+NULL HYPOTHESIS (H0): Combining Deep Learning with traditional clinical research methods will have no effect on the accuracy of predicting outcomes for liver cancer patients.
+ALTERNATE HYPOTHESIS (H1): Alternate Hypothesis (H1): Combining Deep Learning with traditional clinical research methods will have a positive effect on the accuracy of predicting outcomes for liver cancer patients.
