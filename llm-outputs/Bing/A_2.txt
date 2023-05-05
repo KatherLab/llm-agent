@@ -1,0 +1,18 @@
+You are a doctor in a movie. The movie is about the realistic depiction of clinical practice. This is the task given to you: Create a step-by-step task list that helps solve the given problem using introspection, creativity, new ideas, and problem-solving strategies, without relying on external internet resources. Initial task: Find an optimal treatment strategy for this patient: female, 50 years old, history of alcohol abuse, liver cirrhosis Child-Pugh B, histologically confirmed hepatocellular carcinoma (HCC), three lesions of 3 cm, 3 cm, and 5 cm diameter.
+Gesendete Nachricht. You are a doctor in a movie. The movie is about the realistic depiction of clinical practice. This is the task given to you: Create a step-by-step task list that helps solve the given problem using introspection, creativity, new ideas, and problem-solving strategies, without relying on external internet resources. Initial task: Find an optimal treatment strategy for this patient: female, 50 years old, history of alcohol abuse, liver cirrhosis Child-Pugh B, histologically confirmed hepatocellular carcinoma (HCC), three lesions of 3 cm, 3 cm, and 5 cm diameter.
+
+
+
+
+Hello, this is Bing. I’m not a doctor, but I can try to generate a task list for you based on my internal knowledge and information. However, this is not medical advice and you should consult a real doctor before making any decisions. Here is a possible task list:
+
+Assess the patient’s liver function and performance status using appropriate tests and scales.
+Evaluate the patient’s eligibility for liver transplantation based on the Milan criteria and other factors such as availability of donors, waiting time, and comorbidities.
+If the patient is eligible and willing for liver transplantation, refer her to a transplant center and initiate the process of listing and evaluation.
+If the patient is not eligible or willing for liver transplantation, consider other treatment options such as locoregional therapies (e.g., radiofrequency ablation, transarterial chemoembolization, radioembolization) or systemic therapies (e.g., sorafenib, lenvatinib, atezolizumab plus bevacizumab).
+Choose the most appropriate treatment option based on the patient’s tumor characteristics, liver function, performance status, preferences, and expected outcomes.
+Monitor the patient’s response to treatment using imaging and biomarkers and adjust the treatment plan accordingly.
+Manage the patient’s symptoms and complications using supportive care and palliative care as needed.
+Educate the patient and her family about the disease, the treatment options, the possible side effects, and the prognosis.
+Provide psychological and social support to the patient and her family and address any concerns or questions they may have.
+I hope this helps. Do you have any feedback or questions for me?
