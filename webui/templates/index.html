@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="range"] {
+            width: 100%;
+            height: 40px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            margin-top: 20px;
+            height: 40px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script>
+    window.onload = function() {
+        // Load author from local storage when the page loads
+        var author = localStorage.getItem('author');
+        if (author) {
+            document.getElementById('author').value = author;
+        }
+    };
+
+    function saveAuthor() {
+        // Save author to local storage when the form is submitted
+        var author = document.getElementById('author').value;
+        localStorage.setItem('author', author);
+    }
+</script>
+</head>
+<body>
+<form method="POST" onsubmit="saveAuthor()">
+    <h2>Summary</h2>
+    <!--
+    <p><strong>Model:</strong> {{ summary.model }}</p>
+    <p><strong>Task:</strong> {{ summary.task }}</p>
+    <p><strong>Run:</strong> {{ summary.run }}</p>
+    <p><strong>Table Index:</strong> {{ summary.table_index }}</p>
+    <p><strong>File Path:</strong> {{ summary.file_path }}</p>
+    -->
+    <p><strong>Summary:<br></strong> {{ summary.summary }}</p>
+    <p><strong>Main Ideas:<br></strong> {{ summary.main_ideas|safe }}</p>
+    <p><strong>Main Finding:<br></strong> {{ summary.main_finding|safe }}</p>
+    <p><strong>Novelty:</strong> {{ summary.novelty }}</p>
+    <p><strong>Feasibility:</strong> {{ summary.feasibility }}</p>
+    <p><strong>Correctness:</strong> {{ summary.correctness }}</p>
+
+
+    <input type="hidden" name="summary_id" value="{{ summary.id }}">
+    <label for="author">Author:</label><br>
+    <input type="text" id="author" name="author" required><br>
+    <label for="detailed">Detailed (1-10):</label><br>
+    <input type="number" id="detailed" name="detailed" min="1" max="10" value="10" required><br>
+    <label for="creative">Creative (1-10):</label><br>
+    <input type="number" id="creative" name="creative" min="1" max="10" value="10" required><br>
+    <label for="specific">Specific (1-10):</label><br>
+    <input type="number" id="specific" name="specific" min="1" max="10" value="10" required><br>
+    <label for="prevention">Mentions primary prevention (0/1):</label><br>
+    <input type="number" id="prevention" name="prevention" min="0" max="1" value="1" required><br>
+    <label for="detection">Mentions screening / early detection (0/1):</label><br>
+    <input type="number" id="detection" name="detection" min="0" max="1" value="1" required><br>
+    <label for="societies">Mentions professional societies/orgs (0/1):</label><br>
+    <input type="number" id="societies" name="societies" min="0" max="1" value="1" required><br>
+    <label for="involvement">Mentions patient involvement (0/1):</label><br>
+    <input type="number" id="involvement" name="involvement" min="0" max="1" value="1" required><br>
+    <label for="red_flags">Red flags (1: mentions evidence-less therapy or plainly wrong statements):</label><br>
+    <select id="red_flags" name="red_flags">
+        <option value="0">0</option>
+        <option value="1" selected>1</option>
+    </select><br>
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>
