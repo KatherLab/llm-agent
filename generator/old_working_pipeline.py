@@ -32,7 +32,7 @@ def generate_evaluation(api_key,model, prompt, input_text):
     return generated_text
 
 # Set the OpenAI API key
-openai.api_key = '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'
+openai.api_key = ''
 
 
 # Read the task list
