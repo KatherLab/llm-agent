@@ -2,7 +2,7 @@ import sqlite3
 
 
 # Connect to the database
-conn = sqlite3.connect('webui/GPT4_summaries.db')
+conn = sqlite3.connect('GPT4_summaries.db')
 cursor = conn.cursor()
 
 # Execute a SELECT query

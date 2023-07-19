@@ -14,8 +14,9 @@ class Summary(db.Model):
     __tablename__ = 'Summaries'
     id = db.Column(db.Integer, primary_key=True)
     model = db.Column(db.String(50))
-    task = db.Column(db.String(50))
-    run = db.Column(db.Integer)
+    task_index = db.Column(db.String(50))
+    repetition_index = db.Column(db.Integer)
+    truncation_index = db.Column(db.Integer)
     table_index = db.Column(db.Integer)
     file_path = db.Column(db.String(200))
     summary = db.Column(db.Text)
@@ -59,12 +60,12 @@ def index():
         return redirect('/')
     else:
         #TODO: check if the author has already evaluated all the summaries, the current code is not working since the "GET" part is not reading the author fomr "POST"
-        if Score is not None:
-            # get all the summary_ids evaluated by the current author
-            evaluated_summaries = [score.summary_id for score in
-                                   Score.query.filter_by(author=request.form.get('author')).all()]
-            # get a summary not yet evaluated by the current author
+        if Score is not None and Score.summary_id is not None:
+            # get all the summary_ids in the Score table
+            evaluated_summaries = [score.summary_id for score in Score.query.all()]
+            # get a summary not yet evaluated (not in the Score table)
             summary = Summary.query.filter(Summary.id.notin_(evaluated_summaries)).order_by(func.random()).first()
+            # TODO: implement duplicated comment on the same summary but with different author
             if summary is None:
                 return "You have evaluated all the results."
             else:
