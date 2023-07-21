@@ -1,0 +1,4 @@
+## Summary table by gpt-4
+| Summary | Main Ideas | Main Finding | Novelty | Feasibility | Correctness |
+| --- | --- | --- | --- | --- | --- |
+| LLM suggests creating an informational campaign to educate the public about cancer prevention, advocating for prevention policies, and creating networks of support for those affected by cancer. It provides a detailed step-by-step approach to planning and implementing said public health initiative. Regular evaluations and continuous updates are recommended to ensure the effectiveness of the campaign. | - Creation of an informational campaign <br> - Policy advocacy for cancer prevention <br> - Formation of support networks for cancer-affected families | - Most common types of cancer should be prioritized <br> - Modifiable and non-modifiable risk factors should be included in the campaign <br> - Continuous monitoring and evolution of the campaign to ensure it remains up-to-date and effective | 6 | 7 | 9 |

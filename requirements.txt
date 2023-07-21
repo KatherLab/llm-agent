@@ -1,0 +1,7 @@
+pandas
+matplotlib 
+ipykernel
+openpyxl
+flask
+flask_sqlalchemy
+openai

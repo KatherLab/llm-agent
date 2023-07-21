@@ -1,0 +1,4 @@
+## Summary table by gpt-4
+| Summary | Main Ideas | Main Findings | Novelty | Feasibility | Correctness |
+|---|---|---|---|---|---|
+| The AI model proposed a comprehensive plan for developing an information campaign on cancer prevention for a general audience focusing on setting clear objectives, understanding the target audience, developing key messages, and considering distribution channels. It also emphasized the importance of evaluating and sustaining the campaign. A problem and objective for the campaign were also defined. | 1. Importance of clearly defined campaign goals 2. Role of well researched and easily comprehensible key messages 3. Relevance of effective distribution channels and continuous evaluation | 1. Clear goals enhance an information campaign's effectiveness 2. Improved audience understanding through well-researched, comprehensible key messages 3. A sustainable campaign requires continuous monitoring, evaluation, and updates | 6 | 8 | 9 |

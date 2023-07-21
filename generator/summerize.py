@@ -2,8 +2,8 @@ import os
 import subprocess
 import openai
 import pandas as pd
-from generator.utils import generate_evaluation
-from generator.config import api_key
+from utils import generate_evaluation
+from config import api_key
 scoring_model = "gpt-4"
 
 # Read the task list
