@@ -264,4 +264,3 @@ dependencies:
     - werkzeug==2.3.6
     - yarl==1.9.2
     - zstandard==0.21.0
-prefix: /home/jeff/anaconda3/envs/llm-agent
