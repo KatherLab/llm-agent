@@ -18,7 +18,7 @@ Ensure that you have [Anaconda](https://www.anaconda.com/products/distribution) 
 1. Create and install the environment by running:
 
 ```shell
-conda create --name llm-agent --file conda_requirements.txt
+conda env create -f condaenv.yml
 ```
 
 2. Activate the environment:
