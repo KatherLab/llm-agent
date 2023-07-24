@@ -3,14 +3,15 @@ import subprocess
 import openai
 import pandas as pd
 from utils import generate_evaluation
-from config import api_key
+from config import api_key, csv_path, output_dir
 scoring_model = "gpt-4"
+# Get the directory that the current script is in
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 # Read the task list
-task_list = pd.read_csv("llm_task_list.csv")
+task_list = pd.read_csv(csv_path)
 
 # Define the output directory
-output_dir = "results/"
 if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 

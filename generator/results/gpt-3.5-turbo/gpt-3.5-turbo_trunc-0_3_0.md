@@ -1,0 +1,4 @@
+## Summary table by gpt-4
+| Summary | Main Ideas | Main Finding | Novelty | Feasibility | Correctness |
+|:-------:|:----------:|:------------:|:-------:|:-----------:|:-----------:|
+| To enhance breast cancer early detection programs in Europe, consider increasing awareness and education programs, improving accessibility, implementing risk-based screening, standardizing screening guidelines, investing in technology and innovation, enhancing data collection and analysis, fostering multidisciplinary collaboration, and emphasizing post-screening support. | - Increase awareness and education<br> - Standardize screening guidelines<br> - Enhance data collection and analysis | - Implementing these enhancements may lead to improved patient outcomes<br> - Multidisciplinary collaboration fosters innovation and effective implementation<br> - Technology can improve the accuracy of cancer detection | 6 | 7 | 8 |

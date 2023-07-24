@@ -1,0 +1,4 @@
+## Summary table by gpt-4
+| Summary  | Main Ideas  | Main Finding  | Novelty  | Feasibility  | Correctness  |
+|---|---|---|---|---|---|
+| The AI outlines a communication campaign titled "Empower Yourself: Preventing Cancer through Healthy Living." The strategy includes seven main sections: "Know Your Risks," "Adopt a Healthy Lifestyle," "Sun Safety," "Cancer Screenings," "Environmental Awareness," "Vaccinations," and "Emotional Well-being." Each highlights different aspects of cancer prevention and several practical steps to lower one's risk.  | 1. Assessing personal cancer risks.<br> 2. Adopting a healthier lifestyle.<br> 3. Regular cancer screenings. | 1. Individuals should regularly assess their personal cancer risk.<br> 2. Incorporating healthy dietary habits and regular physical activities can lower the risk.<br> 3. Regular screenings can help early detection of cancer. | 4 | 8 | 10 |

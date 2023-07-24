@@ -130,3 +130,65 @@ Adding new tasks to task_storage
 {'task_name': 'Share the success stories and impact of the information campaign to inspire and motivate others to take action in cancer prevention', 'task_id': 45}
 {'task_name': 'Research and gather information on the latest advancements in cancer prevention and treatment', 'task_id': 46}
 {'task_name': 'Conduct a literature review to identify any new studies or research findings related to cancer prevention', 'task_id': 47}
+
+*****CONFIGURATION*****
+
+Name  : BabyAGI
+Mode  : alone
+LLM   : gpt-3.5-turbo
+
+*****OBJECTIVE*****
+
+Create a step-by-step task list that helps solve the given problem using introspection, creativity, new ideas, and problem-solving strategies, without relying on external internet resources.
+
+Initial task: Propose a policy to reduce tobacco consumption in a specific European country
+
+*****NEXT TASK*****
+
+Conduct a thorough analysis of the current situation and gather all relevant information
+
+*****TASK RESULT*****
+
+1. Start by gathering all available information related to the current situation. This may include documents, reports, data, and any other relevant sources.
+
+2. Review the information and identify any patterns, trends, or key insights that may be relevant to the problem at hand.
+
+3. Identify any gaps in the information and determine what additional data or resources may be needed to conduct a thorough analysis.
+
+4. Consider the different perspectives and viewpoints that may be relevant to the current situation. This may involve speaking with stakeholders, team members, or other individuals who have knowledge or expertise in the area.
+
+5. Analyze the data and information collected to identify any potential causes or contributing factors to the problem. Look for any underlying issues or root causes that may be driving the current situation.
+
+6. Consider any potential risks or challenges that may arise from the current situation. This may involve assessing the impact on different stakeholders, the feasibility of potential solutions, or any other relevant factors.
+
+7. Evaluate the current situation in relation to the desired objective. Determine how the current situation aligns with the desired outcome and identify any gaps or areas for improvement.
+
+8. Summarize the findings of the analysis and present them in a clear and concise manner. This may involve creating a report, presentation, or other form of communication to share the information with relevant stakeholders.
+
+9. Use the analysis to inform the next steps in the problem-solving process. This may involve identifying potential solutions, developing an action plan, or seeking additional input or expertise as needed.
+
+10. Continuously monitor and reassess the current situation as new information becomes available. This may involve updating the analysis or making adjustments to the problem-solving approach as needed.
+
+****TASK CREATION AGENT RESPONSE****
+11. Conduct a SWOT analysis to identify the strengths, weaknesses, opportunities, and threats related to the information campaign.
+12. Develop a budget for the information campaign, including costs for content creation, advertising, and any other necessary expenses.
+13. Identify potential partners or sponsors who may be interested in supporting the information campaign financially or through in-kind contributions.
+14. Create a feedback mechanism to gather input and suggestions from the target audience throughout the information campaign.
+15. Develop a system for tracking and measuring the impact of the information campaign, including key performance indicators and metrics.
+16. Conduct a pilot test of the information campaign in a small-scale setting to gather feedback and make any necessary adjustments before launching on a larger scale.
+17. Develop a crisis communication plan to address any potential challenges or negative feedback that may arise during the information campaign.
+18. Establish a process for ongoing communication and collaboration with team members, stakeholders, and partners throughout the information campaign.
+19. Develop a strategy for engaging with the media to generate coverage and raise awareness about the information campaign.
+20. Create a plan for sustainability and long-term impact, including strategies for maintaining momentum and continuing to raise awareness about mental health beyond the initial information campaign.
+
+Adding new tasks to task_storage
+{'task_name': 'Conduct a SWOT analysis to identify the strengths weaknesses opportunities and threats related to the information campaign', 'task_id': 12}
+{'task_name': 'Develop a budget for the information campaign including costs for content creation advertising and any other necessary expenses', 'task_id': 13}
+{'task_name': 'Identify potential partners or sponsors who may be interested in supporting the information campaign financially or through inkind contributions', 'task_id': 14}
+{'task_name': 'Create a feedback mechanism to gather input and suggestions from the target audience throughout the information campaign', 'task_id': 15}
+{'task_name': 'Develop a system for tracking and measuring the impact of the information campaign including key performance indicators and metrics', 'task_id': 16}
+{'task_name': 'Conduct a pilot test of the information campaign in a smallscale setting to gather feedback and make any necessary adjustments before launching on a larger scale', 'task_id': 17}
+{'task_name': 'Develop a crisis communication plan to address any potential challenges or negative feedback that may arise during the information campaign', 'task_id': 18}
+{'task_name': 'Establish a process for ongoing communication and collaboration with team members stakeholders and partners throughout the information campaign', 'task_id': 19}
+{'task_name': 'Develop a strategy for engaging with the media to generate coverage and raise awareness about the information campaign', 'task_id': 20}
+{'task_name': 'Create a plan for sustainability and longterm impact including strategies for maintaining momentum and continuing to raise awareness about mental health beyond the initial information campaign', 'task_id': 21}

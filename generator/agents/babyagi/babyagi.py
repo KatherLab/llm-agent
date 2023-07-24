@@ -20,6 +20,9 @@ import re
 import sys
 # default opt out of chromadb telemetry.
 from chromadb.config import Settings
+import sys
+sys.path.append('generator/')
+from config import api_key, output_dir, csv_path
 
 client = chromadb.Client(Settings(anonymized_telemetry=False))
 
@@ -30,6 +33,8 @@ LLM_MODEL = os.getenv("LLM_MODEL", os.getenv("OPENAI_API_MODEL", "gpt-3.5-turbo"
 
 # API Keys
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
+if OPENAI_API_KEY == "":
+    OPENAI_API_KEY = api_key
 if not (LLM_MODEL.startswith("llama") or LLM_MODEL.startswith("human")):
     assert OPENAI_API_KEY, "\033[91m\033[1m" + "OPENAI_API_KEY environment variable is missing from .env" + "\033[0m\033[0m"
 
@@ -545,8 +550,10 @@ def strip_ansi_codes(s):
     ansi_escape = re.compile(r'\x1B(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])')
     return ansi_escape.sub('', s)
 
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
 def main(num_iterations: int, task_index: int, repetition_index: int):
-    task_list = pd.read_csv("llm_task_list.csv")
+    task_list = pd.read_csv(csv_path)
     row = task_list.loc[task_list['index'] == int(task_index)].iloc[0]
     eu_prompt = row['Prompt*']
     discription = row['Description']
@@ -566,8 +573,10 @@ def main(num_iterations: int, task_index: int, repetition_index: int):
     truncate_interval = 2
     #loop = True
     count = 0
-    print(os.getcwd())
-    txt_path = os.path.join(os.getcwd(), f"results/babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
+    #print(os.getcwd())
+    #print(output_dir)
+    txt_path = os.path.join(output_dir, f"babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
+    #print(txt_path)
     txt_filename = txt_path
     sys.stdout = open(txt_filename, 'a', encoding='utf-8')
     #print("\n*****TASK LIST*****\n")
@@ -575,7 +584,7 @@ def main(num_iterations: int, task_index: int, repetition_index: int):
     for i in range(num_iterations):
         if count !=0 and count % truncate_interval == 0:
             sys.stdout.close()
-            txt_path = os.path.join(os.getcwd(), f"results/babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-{int(  count/truncate_interval)}_{task_index}_{repetition_index}.txt")
+            txt_path = os.path.join(output_dir, f"babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-{int(  count/truncate_interval)}_{task_index}_{repetition_index}.txt")
             txt_filename = txt_path
             sys.stdout = open(txt_filename, 'a', encoding='utf-8')
             print_header()

@@ -1,12 +1,6 @@
 ## Summary table by gpt-4
-The output of the AI model suggests an information campaign focusing on the multifaceted nature of cancer prevention. The campaign would encompass various strategies, such as lifestyle modifications, importance of regular health screenings, and adherence to vaccination schedules. The AI model also stresses the importance of disseminating information through various forms of media to reach a broad audience.
+The AI model suggested an information campaign on cancer prevention aimed at a general audience. The campaign would use mass media outlets to disseminate information about cancer risks, prevention strategies, and early warning signs. This approach would also involve the collaboration of healthcare professionals to provide authoritative information. It suggests utilizing data analytics to monitor the success of the campaign and adjust strategies as necessary.
 
 | Summary | Main Ideas | Main Finding | Novelty | Feasibility | Correctness |
-|:-------:|:----------:|:------------:|:-------:|:-----------:|:-----------:|
-| The AI suggests a comprehensive information campaign on cancer prevention. It includes addressing lifestyle choices, screening options, and vaccinations, using different media outlets for dissemination. | - Lifestyle modification<br/>- Regular health screenings<br/>- Adherence to vaccination schedules | - Direct correlation between lifestyle choices and some types of cancer<br/>-Significant impact of regular health screenings<br/>- Importance of vaccination in cancer prevention | 5 | 9 | 10 | 
-
-Note: 
-
-- The 'Novelty' score is moderate (5) as these are established methods for cancer prevention
-- The 'Feasibility' score is high (9) because the methods suggested are practical and applicable in real-world settings
-- The 'Correctness' score is very high (10) as the information provided aligns with scientifically approved cancer prevention strategies.
+|:----------|:------------|:--------------|:---------:|:-----------:|:-------------:|
+|The AI proposes an information campaign utilizing mass media, featuring healthcare professionals, and guided by data analytics for cancer prevention awareness.|1. Use of mass media. 2. Collaboration with healthcare professionals. 3. Utilization of data analytics.|1. Leverage various communication platforms to raise public awareness. 2. Healthcare professionals can provide trusted information. 3. Data analytics can track and improve campaign effectiveness.|6|8|9|
