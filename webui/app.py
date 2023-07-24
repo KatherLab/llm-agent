@@ -2,11 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 import os
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(os.getcwd(), 'GPT4_summaries.db')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(script_dir, 'GPT4_summaries.db')
 app.config['SQLALCHEMY_BINDS'] = {
-    'scores': 'sqlite:///' + os.path.join(os.getcwd(), 'scores.db')
+    'scores': 'sqlite:///' + os.path.join(script_dir, 'scores.db')
 }
 db = SQLAlchemy(app)
 

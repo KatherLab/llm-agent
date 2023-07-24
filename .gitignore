@@ -10230,3 +10230,4 @@ plots/*.png
 /myenv/share/man/man1/ttx.1
 /myenv/lib64/
 /myenv/pyvenv.cfg
+/generator/API_KEY

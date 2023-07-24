@@ -1,9 +1,10 @@
 import sqlite3
 import os
 import re
+script_dir = os.path.dirname(os.path.realpath(__file__))
 
 # Connect to SQLite database
-conn = sqlite3.connect("GPT4_summaries.db")
+conn = sqlite3.connect(os.path.join(script_dir, "GPT4_summaries.db"))
 cursor = conn.cursor()
 
 # Create table if it doesn't exist
@@ -86,8 +87,8 @@ def update_db(base_path, conn):
 
 
 # Replace with your directory path
-os.path.join(os.getcwd(), 'GPT4_summaries.db')
+os.path.join(script_dir, 'GPT4_summaries.db')
 #base_path = os.path.join(os.getcwd(), "GPT4generated_summaries")
-base_path = os.path.join(os.getcwd(), "../generator/results")
+base_path = os.path.join(script_dir, "../generator/results")
 assert os.path.exists(base_path), "Directory does not exist"
 update_db(base_path, conn)

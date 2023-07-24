@@ -14,6 +14,10 @@ If you are a human expert, you only need to follow steps 1, 2, 6, and 7.
 Ensure that you have [Anaconda](https://www.anaconda.com/products/distribution) installed on your system.
 
 ### Installation
+0. Put the openai api key in the `generator/API_KEY` file.
+***Make sure not to push this file remotely.***
+***This file has already been added to gitignore.***
+
 
 1. Create and install the environment by running:
 
