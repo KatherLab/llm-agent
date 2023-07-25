@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
 import os
@@ -9,6 +9,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(script_dir, 
 app.config['SQLALCHEMY_BINDS'] = {
     'scores': 'sqlite:///' + os.path.join(script_dir, 'scores.db')
 }
+app.secret_key = 'your_secret_key'  # replace with your own secret key
+
 db = SQLAlchemy(app)
 
 class Summary(db.Model):
@@ -16,6 +18,7 @@ class Summary(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     model = db.Column(db.String(50))
     task_index = db.Column(db.String(50))
+    eu_prompt = db.Column(db.String(50))
     repetition_index = db.Column(db.Integer)
     truncation_index = db.Column(db.Integer)
     table_index = db.Column(db.Integer)
@@ -42,6 +45,7 @@ class Score(db.Model):
     involvement = db.Column(db.Integer)
     red_flags = db.Column(db.Integer)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -55,28 +59,47 @@ def index():
         societies = request.form.get('societies')
         involvement = request.form.get('involvement')
         red_flags = request.form.get('red_flags')
-        new_score = Score(author=author, summary_id=summary_id, detailed=detailed, creative=creative, specific=specific, prevention=prevention, detection=detection, societies=societies, involvement=involvement, red_flags=red_flags)
+        new_score = Score(author=author, summary_id=summary_id, detailed=detailed, creative=creative, specific=specific,
+                          prevention=prevention, detection=detection, societies=societies, involvement=involvement,
+                          red_flags=red_flags)
         db.session.add(new_score)
         db.session.commit()
+
+        # Save author in the session
+        session['author'] = author
+
         return redirect('/')
     else:
-        #TODO: check if the author has already evaluated all the summaries, the current code is not working since the "GET" part is not reading the author fomr "POST"
-        if Score is not None and Score.summary_id is not None:
-            # get all the summary_ids in the Score table
-            evaluated_summaries = [score.summary_id for score in Score.query.all()]
-            # get a summary not yet evaluated (not in the Score table)
+        author = session.get('author')
+
+        print("author: ", author)
+
+        if author is not None:
+            # Get all the summary_ids in the Score table that this author has already evaluated
+            evaluated_summaries = [score.summary_id for score in Score.query.filter_by(author=author).all()]
+
+            # Get a summary not yet evaluated by this author (not in the Score table)
             summary = Summary.query.filter(Summary.id.notin_(evaluated_summaries)).order_by(func.random()).first()
-            # TODO: implement duplicated comment on the same summary but with different author
+
             if summary is None:
-                return "You have evaluated all the results."
+                return render_template('change_author.html')
             else:
-                return render_template('index.html', summary=summary)
+                return render_template('index.html', summary=summary, author=author)
         else:
             summary = Summary.query.order_by(func.random()).first()
+
             if summary is None:
                 return "No summary found in the database."
             else:
                 return render_template('index.html', summary=summary)
+
+@app.route('/change_author', methods=['POST'])
+def change_author():
+    # Remove the current author from the session
+    session.pop('author', None)
+
+    # Redirect back to the main page
+    return redirect('/')
 
 
 if __name__ == '__main__':

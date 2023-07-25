@@ -1,8 +1,14 @@
 import sqlite3
 import os
 import re
+import sys
 script_dir = os.path.dirname(os.path.realpath(__file__))
+sys.path.append('generator/')
+from config import csv_path
+import pandas as pd
 
+# Read the task list
+task_list = pd.read_csv(csv_path)
 # Connect to SQLite database
 conn = sqlite3.connect(os.path.join(script_dir, "GPT4_summaries.db"))
 cursor = conn.cursor()
@@ -13,6 +19,7 @@ cursor.execute('''
         id INTEGER PRIMARY KEY,
         model TEXT,
         task_index TEXT,
+        eu_prompt TEXT,
         repetition_index INTEGER,
         truncation_index INTEGER,
         table_index INTEGER,
@@ -62,6 +69,9 @@ def populate_db(folder_path, model, conn):
             truncation_index = file.split("/")[-1].split("_")[1].split("-")[-1]
             print(truncation_index)
             task_index = file.split("/")[-1].split("_")[2]
+            row = task_list.loc[task_list['index'] == int(task_index)].iloc[0]
+            eu_prompt = row['Prompt*']
+
             repetition_index = file.split("/")[-1].split("_")[-1].split(".")[-2]
             #task = task_pattern.match(file).groups()[0]
             #run = int(run_pattern.match(file).groups()[0])
@@ -70,9 +80,9 @@ def populate_db(folder_path, model, conn):
                 try:
                     cursor.execute('''
                         INSERT INTO Summaries (
-                            model, task_index, repetition_index, truncation_index, table_index, file_path, summary, main_ideas, main_finding, novelty, feasibility, correctness
-                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ''', (model, task_index, repetition_index, truncation_index, i, file_path, *summary_table))
+                            model, task_index, eu_prompt, repetition_index, truncation_index, table_index, file_path, summary, main_ideas, main_finding, novelty, feasibility, correctness
+                        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    ''', (model, task_index, eu_prompt, repetition_index, truncation_index, i, file_path, *summary_table))
                     conn.commit()
                 except sqlite3.IntegrityError:
                     pass  # Skip if summary is already in the database
