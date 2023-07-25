@@ -13,6 +13,16 @@ app.secret_key = 'your_secret_key'  # replace with your own secret key
 
 db = SQLAlchemy(app)
 
+def convert_to_html_bullets(text):
+    """Convert a text with bullet points into HTML list."""
+    points = text.split('-')
+    points = [point.strip() for point in points if point]  # remove empty strings
+    html_bullets = '<ul>'
+    for point in points:
+        html_bullets += f'<li>{point}</li>'
+    html_bullets += '</ul>'
+    return html_bullets
+
 class Summary(db.Model):
     __tablename__ = 'Summaries'
     id = db.Column(db.Integer, primary_key=True)
@@ -71,8 +81,9 @@ def index():
         return redirect('/')
     else:
         author = session.get('author')
-
         print("author: ", author)
+
+
 
         if author is not None:
             # Get all the summary_ids in the Score table that this author has already evaluated
@@ -84,6 +95,8 @@ def index():
             if summary is None:
                 return render_template('change_author.html')
             else:
+                summary.main_ideas = convert_to_html_bullets(summary.main_ideas)
+                summary.main_finding = convert_to_html_bullets(summary.main_finding)
                 return render_template('index.html', summary=summary, author=author)
         else:
             summary = Summary.query.order_by(func.random()).first()
@@ -91,6 +104,8 @@ def index():
             if summary is None:
                 return "No summary found in the database."
             else:
+                summary.main_ideas = convert_to_html_bullets(summary.main_ideas)
+                summary.main_finding = convert_to_html_bullets(summary.main_finding)
                 return render_template('index.html', summary=summary)
 
 @app.route('/change_author', methods=['POST'])

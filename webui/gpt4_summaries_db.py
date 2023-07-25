@@ -39,53 +39,58 @@ conn.commit()
 section_pattern = re.compile(r"^## (.*?)$", re.MULTILINE)
 table_pattern = re.compile(r"\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|\n(\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|[^|]+\|\n)+", re.MULTILINE)
 
+import re
+
+
 def parse_md_file(file_path):
     """Parse a markdown file and extract the summary table data."""
     with open(file_path, 'r') as file:
         file_content = file.read()
-    sections = section_pattern.split(file_content)
-    summary_tables = []
-    for i in range(len(sections)):
-        if sections[i].strip() == "Summary table by gpt-4":
-            matches = table_pattern.findall(sections[i+1])
-            if matches:
-                for match in matches:
-                    summary_table = [group.strip() for group in match.split("|")[1:-1]]
-                    summary_tables.append(summary_table)
-    return summary_tables
+
+    print("parsed ", file_path)
+    section_pattern = re.compile(r"(?<=## Summary table by gpt-4)(.*?)(?=##|$)", re.DOTALL)
+    match = section_pattern.search(file_content)
+    if match:
+        summary_data = re.split(r'\n\n|\n(?=[A-Z])', match.group().strip())
+        # Extract each component of the summary
+        summary = summary_data[1].replace('Summary: ', '').strip()
+        main_ideas = summary_data[2].replace('Main Ideas: ', '').strip()
+        main_finding = summary_data[3].replace('Main Finding: ', '').strip()
+        novelty = int(summary_data[4].replace('Novelty: ', '').strip())
+        feasibility = int(summary_data[5].replace('Feasibility: ', '').strip())
+        correctness = int(summary_data[6].replace('Correctness: ', '').strip())
+
+        return [summary, main_ideas, main_finding, novelty, feasibility, correctness]
+
+    return None
+
 
 def populate_db(folder_path, model, conn):
     """Populate the database with data from the markdown files in a folder."""
-    #task_pattern = re.compile(r"^.*?_(.*?)_.*$")
-    #run_pattern = re.compile(r".*[_-](\d{1,2})\.md$")
     files = [f for f in os.listdir(folder_path) if f.endswith(".md")]
-    print(files)
     for file in files:
-        print(file)
         file_path = os.path.join(folder_path, file)
-        summary_tables = parse_md_file(file_path)
-        if summary_tables:
+        summary_data = parse_md_file(file_path)
+        if summary_data:
             model = file.split("/")[-1].split("_")[0]
             truncation_index = file.split("/")[-1].split("_")[1].split("-")[-1]
-            print(truncation_index)
             task_index = file.split("/")[-1].split("_")[2]
             row = task_list.loc[task_list['index'] == int(task_index)].iloc[0]
             eu_prompt = row['Prompt*']
 
             repetition_index = file.split("/")[-1].split("_")[-1].split(".")[-2]
-            #task = task_pattern.match(file).groups()[0]
-            #run = int(run_pattern.match(file).groups()[0])
-            for i, summary_table in enumerate(summary_tables):
+            for i in range(len(summary_data)//6):  # each summary data set contains 6 fields
                 cursor = conn.cursor()
                 try:
                     cursor.execute('''
                         INSERT INTO Summaries (
                             model, task_index, eu_prompt, repetition_index, truncation_index, table_index, file_path, summary, main_ideas, main_finding, novelty, feasibility, correctness
                         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    ''', (model, task_index, eu_prompt, repetition_index, truncation_index, i, file_path, *summary_table))
+                    ''', (model, task_index, eu_prompt, repetition_index, truncation_index, i, file_path, *summary_data[i*6:i*6+6]))
                     conn.commit()
                 except sqlite3.IntegrityError:
                     pass  # Skip if summary is already in the database
+
 
 def update_db(base_path, conn):
     """Update the database with new files from the base directory."""

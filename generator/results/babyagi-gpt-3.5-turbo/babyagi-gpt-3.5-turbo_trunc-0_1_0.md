@@ -1,4 +1,19 @@
 ## Summary table by gpt-4
-| Summary | Main Ideas | Main Findings | Novelty | Feasibility | Correctness |
-|---|---|---|---|---|---|
-| The AI model proposed a comprehensive plan for developing an information campaign on cancer prevention for a general audience focusing on setting clear objectives, understanding the target audience, developing key messages, and considering distribution channels. It also emphasized the importance of evaluating and sustaining the campaign. A problem and objective for the campaign were also defined. | 1. Importance of clearly defined campaign goals 2. Role of well researched and easily comprehensible key messages 3. Relevance of effective distribution channels and continuous evaluation | 1. Clear goals enhance an information campaign's effectiveness 2. Improved audience understanding through well-researched, comprehensible key messages 3. A sustainable campaign requires continuous monitoring, evaluation, and updates | 6 | 8 | 9 |
+Summary: 
+The AI strategy considers a comprehensive approach to raising awareness about cancer prevention for a general audience. The approach combines meticulous research, key message development, creation of engaging materials, strategic distribution, effective engagement tactics, and continuous evaluation of the campaign's success. This approach also proposes partnership with healthcare professionals and local organizations to increase campaign reach.
+
+Main Ideas: 
+- Perform extensive research and develop a clear and concise communication strategy.
+- Create engaging content and distribute effectively using online platforms and community outreach.
+- Collaborate with healthcare professionals and community organizations, continuously measure the campaign's effectiveness, and plan for long-term engagement.
+
+Main Finding: 
+- The plan emphasizes clear communication, extensive public engagement through different platforms, and maintains the campaign's relevance through regular updates based on evaluations.
+- Collaborations with professionals and community organizations are highlighted for effective reach and information credibility.
+- Importance of monitoring and regular updates for long-term success are discussed.
+
+Novelty: 6
+
+Feasibility: 8
+
+Correctness: 9
