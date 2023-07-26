@@ -25,7 +25,10 @@ from camel.messages import OpenAIMessage
 from camel.typing import ModelType, TaskType
 
 F = TypeVar('F', bound=Callable[..., Any])
-
+import sys
+sys.path.append('generator/')
+from config import api_key, output_dir, csv_path
+print(api_key)
 
 def get_model_encoding(value_for_tiktoken: str):
     r"""Get model encoding from tiktoken.
@@ -163,6 +166,10 @@ def openai_api_key_required(func: F) -> F:
         if self.model == ModelType.STUB:
             return func(self, *args, **kwargs)
         elif 'OPENAI_API_KEY' in os.environ:
+            return func(self, *args, **kwargs)
+        elif api_key is not None:
+            # insert the api key into the environment variables
+            self.api_key = api_key
             return func(self, *args, **kwargs)
         else:
             raise ValueError('OpenAI API key not found.')

@@ -4,7 +4,7 @@ import sys
 sys.path.append('..')
 script_dir = os.path.dirname(os.path.realpath(__file__))
 
-from config import api_key, csv_path, output_dir
+from config import api_key, csv_path, output_dir, num_iterations
 import pandas as pd
 from utils import generate_evaluation
 import openai
@@ -38,5 +38,5 @@ for index, row in task_list.iterrows():
 
             # call python generator/babyagi/babyagi.py
             # TODO: put gpt4 into babyagi, but this would be expensive
-            subprocess.run(["python", babyagi_script, "--task_index", str(row['index']), "--repetition_index", str(repetition_index)])#, "--model", model
+            subprocess.run(["python", babyagi_script, "--task_index", str(row['index']), "--repetition_index", str(repetition_index), "--num_iterations", str(num_iterations)])#, "--model", model
             print('working on babyagi ', row['index'], repetition_index, 'done')

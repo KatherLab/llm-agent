@@ -25,3 +25,6 @@ def read_api_key():
         print("API_KEY file not found.")
         return None
 api_key = openai.api_key = read_api_key()
+
+num_iterations = 6
+truncate_interval = 2
