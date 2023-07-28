@@ -1,7 +1,7 @@
 '''
 Adapted from https://github.com/kojima-takeshi188/zero_shot_cot
 '''
-
+import sys
 from statistics import mean
 from torch.utils.data import Dataset
 import openai
@@ -72,8 +72,13 @@ def decoder_for_gpt3(args, input, max_length):
         engine = "text-davinci-001"
     elif args.model == "code-davinci-002":
         engine = "code-davinci-002"
+    elif args.model == "gpt-4":
+        engine = "gpt-4"
     else:
         raise ValueError("model is not properly defined ...")
+
+    print("=========================================")
+    print("engine: ", engine)
         
     if ("few_shot" in args.method or "auto" in args.method)  and engine == "code-davinci-002":
         response = openai.Completion.create(
@@ -347,7 +352,7 @@ def answer_cleansing(args, pred, must_choice=False):
 
 def create_demo_text(args, cot_flag):
     x, z, y = [], [], []
-    
+    sys.path.append("generator/agents/auto-cot-main")
     with open(args.demo_path, encoding="utf-8") as f:
         json_data = json.load(f)
         json_data = json_data["demo"]

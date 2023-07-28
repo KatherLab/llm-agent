@@ -43,8 +43,8 @@ def main(num_iterations, task_index, repetition_index, model_type=None) -> None:
         with_task_specify=True,
         task_specify_agent_kwargs=dict(model=model_type),
         task_type=TaskType.CODE,
-        extend_sys_msg_meta_dicts=[meta_dict, meta_dict],
-        extend_task_specify_meta_dict=meta_dict,
+        #extend_sys_msg_meta_dicts=[meta_dict],
+        #extend_task_specify_meta_dict=meta_dict,
     )
 
     print(
@@ -109,5 +109,7 @@ if __name__ == "__main__":
     # Convert strings to integers
     task_index = int(task_index)
     repetition_index = int(repetition_index)
+    num_iterations = int(num_iterations)
+
     # Call main function
     main(num_iterations, task_index, repetition_index)
