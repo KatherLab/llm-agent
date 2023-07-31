@@ -16,15 +16,26 @@ key_file = os.path.join(script_dir, "API_KEY")
 # Define the output directory
 output_dir = os.path.join(script_dir, "results/")
 
-def read_api_key():
+def read_openai_api_key():
     try:
         with open(key_file, 'r') as f:
-            api_key = f.read().strip()
+            api_key = f.read().splitlines()[0]
             return api_key
     except FileNotFoundError:
         print("API_KEY file not found.")
         return None
-api_key = openai.api_key = read_api_key()
-
+def read_bard_token():
+    try:
+        with open(key_file, 'r') as f:
+            # read second line
+            token = f.read().splitlines()[1]
+            return token
+    except FileNotFoundError:
+        print("API_KEY file not found.")
+        return None
+api_key = openai.api_key = read_openai_api_key()
+bard_token = read_bard_token()
+#print("API_KEY:", api_key)
+#print("BARD_TOKEN:", bard_token)
 num_iterations = 6
 truncate_interval = 2

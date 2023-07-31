@@ -21,6 +21,7 @@ ll_agi_model_list = ["gpt-3.5-turbo", "gpt-4"] #"gpt-4",
 babyagi_script = os.path.join(script_dir, "agents/babyagi/babyagi.py")
 camel_script = os.path.join(script_dir, "agents/camel-master/examples/code/main.py")
 cot_script = os.path.join(script_dir, "agents/auto-cot-main/cot_main.py")
+bard_script = os.path.join(script_dir, "agents/bard.py")
 
 # For each task
 for index, row in task_list.iterrows():
@@ -51,3 +52,6 @@ for index, row in task_list.iterrows():
         #print("python", cot_script, "--task_index", str(row['index']), "--repetition_index", str(repetition_index), "--num_iterations", str(num_iterations))
         subprocess.run(["python", cot_script, "--task_index", str(row['index']), "--repetition_index", str(repetition_index)])#, "--model", model
         print('working on cot ', row['index'], repetition_index, 'done')
+
+        subprocess.run(["python", bard_script, "--task_index", str(row['index']), "--repetition_index", str(repetition_index)])#, "--model", model
+        print('working on bard ', row['index'], repetition_index, 'done')

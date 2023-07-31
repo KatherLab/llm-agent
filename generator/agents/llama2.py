@@ -19,6 +19,7 @@ sequences = pipeline(
     num_return_sequences=1,
     eos_token_id=tokenizer.eos_token_id,
     max_length=200,
+    use_auth_token=True
 )
 for seq in sequences:
     print(f"Result: {seq['generated_text']}")
