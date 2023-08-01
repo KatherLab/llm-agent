@@ -1,0 +1,18 @@
+*****************************
+Test Question:
+You are tasked to develop a policy or research strategy to reduce the exposure of the population to hazardous substances.
+*****************************
+Prompted Input:
+Q: You are tasked to develop a policy or research strategy to reduce the exposure of the population to hazardous substances.
+A: Let's think step by step.
+*****************************
+Namespace(api_time_interval=1.0, cot_trigger="Let's think step by step.", cot_trigger_no=1, direct_answer_trigger_for_fewshot='The answer is', direct_answer_trigger_for_zeroshot='The answer is', direct_answer_trigger_for_zeroshot_cot='The answer is', limit_dataset_size=0, log_dir='./log/', max_length_cot=256, max_length_direct=32, max_num_worker=0, method='zero_shot_cot', model='gpt3', output_dir='./output/', repetition_index=2, task_index=9, temperature=0)
+=========================================
+engine:  text-ada-001
+=========================================
+engine:  text-ada-001
+Output:
+1. Develop a risk assessment of the potential health risks posed by the hazardous substances.2. Identify the public and private entities with which we need to work together to create or maintain a safe environment for the population.3. Identify the level of risk posed by the hazardous substances and the necessary measures that need to be taken to protect the population.4. Identify the level of risk and the necessary measures that needs to be taken to protect the population.5. Develop a policy that will reduce the exposure of the population to hazardous substances.6. implement the policy. The answer is :
+
+There is no one step that will reduce the exposure of the population to hazardous substances completely, but a risk assessment, public and private sector dialogue,
+*****************************

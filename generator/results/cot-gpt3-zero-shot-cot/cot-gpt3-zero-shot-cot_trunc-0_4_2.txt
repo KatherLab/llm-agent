@@ -1,0 +1,16 @@
+*****************************
+Test Question:
+Develop a proposal for integrating recent technological advances into personalized cancer care
+*****************************
+Prompted Input:
+Q: Develop a proposal for integrating recent technological advances into personalized cancer care
+A: Let's think step by step.
+*****************************
+Namespace(api_time_interval=1.0, cot_trigger="Let's think step by step.", cot_trigger_no=1, direct_answer_trigger_for_fewshot='The answer is', direct_answer_trigger_for_zeroshot='The answer is', direct_answer_trigger_for_zeroshot_cot='The answer is', limit_dataset_size=0, log_dir='./log/', max_length_cot=256, max_length_direct=32, max_num_worker=0, method='zero_shot_cot', model='gpt3', output_dir='./output/', repetition_index=2, task_index=4, temperature=0)
+=========================================
+engine:  text-ada-001
+=========================================
+engine:  text-ada-001
+Output:
+1. Let personalized cancer care take off the market.2. Let personalized cancer care include more and more treatments that use new technologies.3. Let personalized cancer care include treatments that are specific to certain cancers.4. Let personalized cancer care include personalized care that includes all aspects of the cancer patient's life.5. Let personalized cancer care include care that is affordable and easy to access. The answer is  both.2
+*****************************
