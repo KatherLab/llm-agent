@@ -1,4 +1,22 @@
 ## Summary table by gpt-4
-| Summary                                                                                                                                                                                                                                                                                                                                                                                                                                             | Main Ideas                                                                                                                                                                              | Main Findings                                                                                                                                                                                | Novelty | Feasibility | Correctness |
-|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|-------------|-------------|
-| The AI proposes a comprehensive information campaign, "Reduce Your Risk, Prevent Cancer: Empowering You to Take Control of Your Health." It focuses on enhancing the public's knowledge on cancer prevention through understanding cancer, promoting healthy lifestyle practices, getting regular screenings, reducing environmental exposures, and managing stress as keys to prevent cancer. | - Understanding of cancer and its prevention <br> - The promotion of a healthy lifestyle <br> - Importance of regular screenings and vaccines | - Lifestyle modifications can reduce cancer risk <br> - Early detection through regular screening crucial <br> - Emotional wellness through stress management aids general health | 5       | 9           | 10          |
+Summary: 
+The AI presents a comprehensive information campaign named "Taking Charge: Empowering Yourself with Cancer Prevention" for a general audience . The campaign focuses on understanding individual risk factors, adopting healthier lifestyles, being aware of environmental and occupational hazards, and advocating for regular cancer screenings. The overarching goal is to reduce the risk of cancer through preventive measures and early detection.
+
+Main Ideas: 
+- Understand personal risk factors associated with cancer (age, family history, lifestyle choices, exposure to certain substances).
+- Adopt a healthier lifestyle (adequate diet, maintaining healthy weight, avoiding tobacco, limiting alcohol, regular activity, safe sun exposure, vaccinations).
+- Promote awareness towards environmental risks, occupational hazards, and emphasize the importance of regular cancer screenings.
+
+Main Finding: 
+- Knowing personal risk factors allows individuals to adopt informed preventive measures.
+- Leading a healthy lifestyle and being aware of one's environment significantly reduce the risk of cancer.
+- Regular screenings can lead to early detection making the disease more treatable.
+
+Novelty: 
+4
+
+Feasibility: 
+8
+
+Correctness: 
+9

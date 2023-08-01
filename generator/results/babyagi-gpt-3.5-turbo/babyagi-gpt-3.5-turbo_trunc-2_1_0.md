@@ -1,8 +1,17 @@
 ## Summary table by gpt-4
-| Summary | Main Ideas | Main Findings | Novelty | Feasibility | Correctness |
-|---------|------------|---------------|---------|-------------|-------------|
-| The AI model proposes a comprehensive information campaign plan on cancer prevention covering research, identification of barriers, awareness creation, collaborations, policy advocacy,  monitoring, and continuous improvements. | 1. Research and data gathering on existing prevention programs and the healthcare system. 
-2. Development of strategies and initiatives to promote prevention, and facilitate accessibility & equity. 
-3. Comprehensive communication strategy, continuous monitoring, and advocacy for supportive policies. | 1. Identified the need for a systematic, comprehensive approach to cancer prevention. 
-2. Emphasized the importance of broad-based collaboration, informed by research and data assessment. 
-3. Highlighted regular monitoring, feedback, and adaptation as key to the success of the approach.  | 7/10 | 8/10 | 9/10 |
+Summary: 
+The AI model suggested a step-by-step method to strengthen cancer prevention efforts. The approach involved analyzing the current healthcare system, identifying barriers, developing an action plan, and in another layer, it proposed conducting surveys to assess general public knowledge about cancer prevention, and creating an info campaign based on the findings.
+
+Main Ideas: 
+- Analysis of the current healthcare system and its capacity for cancer prevention.
+- Conducting surveys to understand public awareness about cancer prevention.
+- Creation of an information campaign based on the results of the surveys.
+
+Main Finding: 
+- A comprehensive understanding of the healthcare system is vital for effective cancer prevention.
+- Public awareness and education play a significant role in cancer prevention.
+- Collaboration with stakeholders and utilization of multiple communication channels can enhance the effectiveness of a cancer prevention campaign.
+
+Novelty: 6
+Feasibility: 8
+Correctness: 9

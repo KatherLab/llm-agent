@@ -44,7 +44,7 @@ for file in txt_files:
     evaluation_prompt = f"""
     I will give you the output of an AI model that was prompted to provide a hypothetical approach to solve a complex question. 
     The objective objective it to {discription}. The initial prompt assigned to the AI model is {eu_prompt}.
-    Please summarize this output in a table with the following columns: 
+    Please summarize this output with the following columns: 
     summary (content should be three concise sentences), 
     main ideas (content should be three very short bullet points), 
     main finding (content should be three very short bullet points), 
@@ -53,6 +53,14 @@ for file in txt_files:
     correctness (rate the factual correctness of the output from 1 to 10). 
     Remember that the approach was hypothetical, i.e. the AI model did not actually perform any study. 
     Do not suggest in your output that actual research was done, rather, emphasize the hypothetical idea. OK?
+    
+    Strictly format your output by following the format of rows: 
+    Summary: 
+    Main Ideas: 
+    Main Finding: 
+    Novelty: 
+    Feasibility: 
+    Correctness:
     """
 
     evaluation = generate_evaluation(openai.api_key, scoring_model, evaluation_prompt, generated_text)
