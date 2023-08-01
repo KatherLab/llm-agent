@@ -1,0 +1,16 @@
+*****************************
+Test Question:
+You are tasked to develop a policy or research strategy to strengthen international cooperation in cancer research.
+*****************************
+Prompted Input:
+Q: You are tasked to develop a policy or research strategy to strengthen international cooperation in cancer research.
+A: Let's think step by step.
+*****************************
+Namespace(api_time_interval=1.0, cot_trigger="Let's think step by step.", cot_trigger_no=1, direct_answer_trigger_for_fewshot='The answer is', direct_answer_trigger_for_zeroshot='The answer is', direct_answer_trigger_for_zeroshot_cot='The answer is', limit_dataset_size=0, log_dir='./log/', max_length_cot=256, max_length_direct=32, max_num_worker=0, method='zero_shot_cot', model='gpt3', output_dir='./output/', repetition_index=1, task_index=7, temperature=0)
+=========================================
+engine:  text-ada-001
+=========================================
+engine:  text-ada-001
+Output:
+1. Develop a policy that encourages international cooperation in cancer research.2. Encourage international cooperation in cancer research through various methods such as funding agencies, cooperative projects, and cooperative agreements.3. Promote international cooperation in cancer research through media and public relations campaigns.4. Help create an international cooperation program for the development of new cancer treatments.5. Work with other organizations to develop a cooperative program that would provide support for the development of new cancer treatments.6. Help to create a program in cooperation with other organizations to promote the development of new cancer treatments. The answer is : a policy that encourages international cooperation in cancer research.
+*****************************

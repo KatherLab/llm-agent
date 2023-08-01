@@ -47,7 +47,7 @@ def parse_md_file(file_path):
     with open(file_path, 'r') as file:
         file_content = file.read()
 
-    print("parsed ", file_path)
+    print("parsing ", file_path)
     section_pattern = re.compile(r"(?<=## Summary table by gpt-4)(.*?)(?=##|$)", re.DOTALL)
     match = section_pattern.search(file_content)
     if match:
@@ -56,9 +56,23 @@ def parse_md_file(file_path):
         summary = summary_data[1].replace('Summary: ', '').strip()
         main_ideas = summary_data[2].replace('Main Ideas: ', '').strip()
         main_finding = summary_data[3].replace('Main Finding: ', '').strip()
-        novelty = int(summary_data[4].replace('Novelty: ', '').strip())
-        feasibility = int(summary_data[5].replace('Feasibility: ', '').strip())
-        correctness = int(summary_data[6].replace('Correctness: ', '').strip())
+
+        # Processing the scores
+        def process_score(score_str):
+            score_str = score_str.strip()
+            if '/' in score_str:  # score is a fraction
+                return float(score_str.split('/')[0])  # numerator of the fraction
+            if len(score_str) > 15:
+                return float(score_str[0])
+            if '\n' in score_str:  # score is a fraction
+                return float(score_str.split('\n')[-1])
+            else:  # score is a whole number
+                return float(score_str)
+
+        print(summary_data[4])
+        novelty = process_score(summary_data[4].replace('Novelty: ', ''))
+        feasibility = process_score(summary_data[5].replace('Feasibility: ', ''))
+        correctness = process_score(summary_data[6].replace('Correctness: ', ''))
 
         return [summary, main_ideas, main_finding, novelty, feasibility, correctness]
 

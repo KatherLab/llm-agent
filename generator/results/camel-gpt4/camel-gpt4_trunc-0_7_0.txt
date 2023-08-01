@@ -1,0 +1,133 @@
+[34mAI User:
+
+Instruction: Create a Python class named "ResearchInstitution" that represents a cancer research institution.
+Input: None
+
+
+[32mAI Assistant:
+
+Solution: 
+
+class ResearchInstitution:
+    def __init__(self):
+        pass
+
+Next request.
+
+
+[34mAI User:
+
+Instruction: Add a constructor to the "ResearchInstitution" class that takes parameters for the name, location, and contact information of the institution.
+Input: None
+
+
+[32mAI Assistant:
+
+Solution:
+
+class ResearchInstitution:
+    def __init__(self, name, location, contact_info):
+        self.name = name
+        self.location = location
+        self.contact_info = contact_info
+
+Next request.
+
+
+[34mAI User:
+
+Instruction: Add a method named "add_collaborator" to the "ResearchInstitution" class that takes a parameter for a collaborator institution and adds it to a list of collaborators.
+Input: Collaborator institution object
+
+
+[32mAI Assistant:
+
+Solution:
+
+class ResearchInstitution:
+    def __init__(self, name, location, contact_info):
+        self.name = name
+        self.location = location
+        self.contact_info = contact_info
+        self.collaborators = []
+
+    def add_collaborator(self, collaborator):
+        self.collaborators.append(collaborator)
+
+Next request.
+
+
+[34mAI User:
+
+Instruction: Implement a method named "share_data" in the "ResearchInstitution" class that takes a parameter for the data to be shared and sends it to all the collaborators.
+Input: Data to be shared
+
+
+[32mAI Assistant:
+
+Solution:
+
+import requests
+
+class ResearchInstitution:
+    def __init__(self, name, location, contact_info):
+        self.name = name
+        self.location = location
+        self.contact_info = contact_info
+        self.collaborators = []
+
+    def add_collaborator(self, collaborator):
+        self.collaborators.append(collaborator)
+
+    def share_data(self, data):
+        for collaborator in self.collaborators:
+            collaborator.receive_data(data)
+
+class Collaborator:
+    def __init__(self, name, location, contact_info):
+        self.name = name
+        self.location = location
+        self.contact_info = contact_info
+
+    def receive_data(self, data):
+        # Implement the logic to send the data to the collaborator
+        # For example, using a POST request
+        response = requests.post(self.contact_info, data=data)
+        if response.status_code == 200:
+            print(f"Data successfully shared with {self.name}")
+        else:
+            print(f"Failed to share data with {self.name}")
+
+Next request.
+
+
+[34mAI User:
+
+Instruction: Create an instance of the "ResearchInstitution" class named "institution1" with the name "Cancer Research Institute", location "New York", and contact information "http://example.com".
+Input: None
+
+
+[32mAI Assistant:
+
+Solution:
+
+institution1 = ResearchInstitution("Cancer Research Institute", "New York", "http://example.com")
+
+Next request.
+
+
+[34mAI User:
+
+Instruction: Create another instance of the "ResearchInstitution" class named "institution2" with the name "Oncology Research Center", location "London", and contact information "http://example.org".
+Input: None
+
+
+[32mAI Assistant:
+
+Solution:
+
+institution2 = ResearchInstitution("Oncology Research Center", "London", "http://example.org")
+
+Next request.
+
+

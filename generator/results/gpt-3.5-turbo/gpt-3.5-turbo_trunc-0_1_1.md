@@ -1,19 +1,19 @@
 ## Summary table by gpt-4
 Summary: 
-The AI presents a comprehensive information campaign named "Taking Charge: Empowering Yourself with Cancer Prevention" for a general audience . The campaign focuses on understanding individual risk factors, adopting healthier lifestyles, being aware of environmental and occupational hazards, and advocating for regular cancer screenings. The overarching goal is to reduce the risk of cancer through preventive measures and early detection.
+The AI suggests a comprehensive information campaign named "Unite Against Cancer: Preventive Measures for a Healthier Future". The campaign aims to raise awareness about cancer prevention and emphasizes individual responsibility towards adopting healthier lifestyle choices. It focuses on ten key messages including awareness, diet, exercise, tobacco-free living, sun safety, moderation in alcohol intake, regular health check-ups, avoidance of environmental hazards, vaccination, and emotional well-being.
 
 Main Ideas: 
-- Understand personal risk factors associated with cancer (age, family history, lifestyle choices, exposure to certain substances).
-- Adopt a healthier lifestyle (adequate diet, maintaining healthy weight, avoiding tobacco, limiting alcohol, regular activity, safe sun exposure, vaccinations).
-- Promote awareness towards environmental risks, occupational hazards, and emphasize the importance of regular cancer screenings.
+- Raising cancer awareness and promoting healthy lifestyle choices to prevent cancer.
+- Encouraging individuals to take preventive measures and reduce individual risk factors.
+- Emphasizing on the importance of regular health check-ups, vaccinations, and mental well-being in preventing cancer.
 
 Main Finding: 
-- Knowing personal risk factors allows individuals to adopt informed preventive measures.
-- Leading a healthy lifestyle and being aware of one's environment significantly reduce the risk of cancer.
-- Regular screenings can lead to early detection making the disease more treatable.
+- Knowledge and awareness are key elements in preventing cancer and improving treatment outcomes.
+- Healthy lifestyle choices, like balanced diet, regular exercise, tobacco-free living, and sun safety, can significantly reduce cancer risk.
+- Regular health check-ups and vaccinations, avoiding environmental hazards, and maintaining emotional well-being are vital preventive measures against cancer.
 
 Novelty: 
-4
+6
 
 Feasibility: 
 8

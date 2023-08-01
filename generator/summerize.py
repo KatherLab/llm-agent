@@ -21,6 +21,17 @@ for root, dirs, files in os.walk(output_dir):
     for file in files:
         if file.endswith(".txt"):
              txt_files.append(os.path.join(root, file))
+md_files = []
+for root, dirs, files in os.walk(output_dir):
+    for file in files:
+        if file.endswith(".md"):
+             md_files.append(os.path.join(root, file))
+print(len(txt_files))
+# remove the txt files that already have md files
+for md_file in md_files:
+    txt_files.remove(md_file.replace(".md", ".txt"))
+print(len(txt_files))
+
 # Define the evaluation prompt for ChatGPT-4
 
 

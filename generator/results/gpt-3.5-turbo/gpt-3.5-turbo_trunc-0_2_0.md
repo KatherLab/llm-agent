@@ -1,22 +1,22 @@
 ## Summary table by gpt-4
 Summary: 
-The hypothetical policy proposes a comprehensive approach to reduce tobacco use in a specified European country. The policy includes strategies such as raising tobacco prices, implementing stricter packaging and labeling regulations, protecting non-smokers, enhancing public awareness, strengthening cessation services, restricting tobacco marketing, and strengthening regulations. It also focuses on continuous evaluation, and budget considerations to effectively apply the proposed measures. 
+The proposed policy to reduce tobacco consumption in a specific European country encompasses education and awareness initiatives, stringent advertising regulations, increased taxation, promotion of smoke-free environments, strengthening of cessation programs, regulation of alternative tobacco products, increased funding for control efforts, and regular monitoring and evaluation. It emphasizes an integrated, multi-sectoral approach in addressing the issue. The goal is to lessen health, social and economic burdens associated with tobacco use.
 
 Main Ideas: 
-- Implementation of stricter regulations and awareness campaigns to decrease tobacco consumption.
-- Increase in tobacco prices and control on marketing to limit accessibility and appeal.
-- Enhancement of smoking cessation services and protection of non-smokers from secondhand smoke.
+- Comprehensive school-based prevention programs and national public awareness campaigns.
+- Higher taxation on tobacco, implementation of smoke-free laws, and stricter advertising regulations.
+- Strengthened cessation programs, regulation of alternative tobacco products, and increased funding for control efforts.
 
 Main Finding: 
-- Higher tobacco prices and stricter packaging could decrease the appeal and affordability of tobacco products.
-- Mass awareness campaigns and strict marketing controls can reduce the popularity of tobacco use.
-- Improved cessation services and strong regulations could enhance the effectiveness of reducing tobacco consumption.
+- A multi-pronged approach can potentially reduce tobacco consumption significantly.
+- Persistent efforts in public awareness can combat tobacco use effectively.
+- Regulations on alternative tobacco products are as necessary as they are on traditional products.
 
 Novelty: 
 7
 
-Feasibility: 
+Feasibility:
 8
 
-Correctness: 
-9
+Correctness:
+8

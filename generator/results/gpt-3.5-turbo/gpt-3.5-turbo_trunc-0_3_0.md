@@ -1,22 +1,19 @@
 ## Summary table by gpt-4
 Summary: 
-The AI model recommends improving breast cancer early detection programs in Europe through enhanced education and awareness, ensuring equitable access to screening, implementing a risk-based screening approach, and standardizing screening guidelines across the region. It further proposes an investment in innovative detection technology, improved data collection and analysis, multi-disciplinary collaboration, and strengthened post-screening support.
+The AI model recommends ten hypothetical enhancements to improve a breast cancer early detection program in Europe. These suggestions focus on increasing public awareness, improving healthcare professional education and training, broadening access to screening facilities, and tailoring screening guidelines. It also emphasizes on improved data collection, increased collaboration, patient empowerment, quality assurance, ongoing research, and continuous program evaluation for potential improvements.
 
 Main Ideas: 
-- Increase in awareness and accessibility for early detection of breast cancer, incorporating risk-based screening.
-- Standardization of screening guidelines across Europe and investment in advanced detection technology.
-- Enhancement in data collection and analysis, fostering multidisciplinary collaboration, and focus on robust post-screening support.
+- Increase public awareness and improve education for Healthcare professionals.
+- Broaden access to screening facilities and personalize screening guidelines based on individual risk factors. 
+- Enhance data collection, encourage intra-European collaboration, empower patients, ensure quality, and promote research and continuous program evaluation.
 
 Main Finding: 
-- Awareness and education on breast cancer can improve early detection.
-- Implementing risk-based screening and access to advanced technology can enhance detection accuracy.
-- Improved data analysis and multidisciplinary collaboration can strengthen early detection programs.
+- Public awareness and professional education can boost screening rates.
+- Accessibility to screening services and personalized screening guidelines can enhance early detection.
+- Advanced data collection and continuous research and assessment could improve overall program effectiveness.
 
-Novelty: 
-8
+Novelty: 8 
 
-Feasibility: 
-7
+Feasibility: 7
 
-Correctness: 
-9
+Correctness: 9

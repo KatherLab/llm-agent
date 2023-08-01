@@ -1,22 +1,22 @@
 ## Summary table by gpt-4
 Summary: 
-The AI model outlines a multi-dimensional approach to an information campaign called "Cancer Prevention Roadmap" which is aimed at raising awareness about cancer prevention. The plan includes disseminating educational content in various public spaces, emphasizing on regular medical check-ups, advocating for healthy lifestyle habits, and discussing environmental factors plus emotional well-being. Lastly, it includes the creation of a support system, provide motivational stories of cancer survivors, and the importance of broad-based collaboration with various stakeholders.
+The AI proposes an information campaign to reduce cancer risk through increased awareness and lifestyle changes. It provides eight main strategies, including understanding risk factors, avoiding tobacco, maintaining a healthy diet, exercising, protecting against the sun, keeping up with immunizations, conducting regular screenings, and reducing exposure to harmful chemicals. The model emphasizes the importance of empowering oneself with knowledge and making informed lifestyle decisions.
 
 Main Ideas: 
-- Creation and dissemination of awareness materials about cancer prevention.
-- Advocacy for lifestyle changes, regular check-ups, mental well-being and protection from environmental factors.
-- Building a support system and sharing inspiring stories of cancer survivors.
+- Increase public knowledge around common cancer risk factors.
+- Implement lifestyle changes, such as healthy diet, regular activity, and quitting tobacco.
+- Encourage regular screenings, immunizations, and minimizing exposure to harmful substances.
 
 Main Finding: 
-- Public awareness about cancer prevention can be significantly improved with targeted information dissemination.
-- Regular medical check-ups, healthy lifestyle, mental well-being, and reduced exposure to harmful environmental factors can significantly reduce cancer risk.
-- A support system, including sharing experiences and stories of cancer survivors, can inspire and encourage people to proactively engage in cancer preventive measures.
+- Awareness about risk factors can help make informed lifestyle decisions.
+- Leading a healthy lifestyle can substantially diminish the risk of developing cancer.
+- Regular health screening and vaccinations can contribute to early detection and prevention of cancer.
 
 Novelty: 
-6
+2
 
 Feasibility: 
-8
+10
 
 Correctness: 
 10

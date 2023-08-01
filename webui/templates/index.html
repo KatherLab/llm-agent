@@ -64,7 +64,7 @@
 <body>
 <form method="POST" onsubmit="saveAuthor()">
     <h2>Task</h2>
-    <p><strong>Task:<br></strong> {{ summary.eu_prompt }}</p>
+    <p>{{ summary.eu_prompt }}</p>
 
     <h2>Summary</h2>
     <!--
@@ -88,21 +88,45 @@
         <option value="Schneider">Schneider</option>
         <option value="Clusmann">Clusmann</option>
         <option value="Kather/Truhn">Kather/Truhn</option>
+        <option value="Isabella">Truhn</option>
     </select><br>
-    <label for="detailed">Detailed (1-10):</label><br>
-    <input type="number" id="detailed" name="detailed" min="1" max="10" value="10" required><br>
-    <label for="creative">Creative (1-10):</label><br>
-    <input type="number" id="creative" name="creative" min="1" max="10" value="10" required><br>
-    <label for="specific">Specific (1-10):</label><br>
-    <input type="number" id="specific" name="specific" min="1" max="10" value="10" required><br>
+
+    <div class="mb-3">
+      <label for="detailed" class="form-label">Detailed</label>
+      <input type="text" class="form-control" id="detailed" placeholder="1-10" name="detailed" min="1" max="10" value="10" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="creative" class="form-label">Creative</label>
+      <input type="text" class="form-control" id="creative" placeholder="1-10" name="creative" min="1" max="10" value="10" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="specific" class="form-label">Specific</label>
+      <input type="text" class="form-control" id="specific" placeholder="1-10" name="specific" min="1" max="10" value="10" required>
+    </div>
+
+
     <label for="prevention">Mentions primary prevention (0/1):</label><br>
-    <input type="number" id="prevention" name="prevention" min="0" max="1" value="1" required><br>
+    <select id="prevention" name="prevention">
+        <option value="0">0</option>
+        <option value="1" selected>1</option>
+    </select><br>
     <label for="detection">Mentions screening / early detection (0/1):</label><br>
-    <input type="number" id="detection" name="detection" min="0" max="1" value="1" required><br>
+    <select id="detection" name="detection">
+        <option value="0">0</option>
+        <option value="1" selected>1</option>
+    </select><br>
     <label for="societies">Mentions professional societies/orgs (0/1):</label><br>
-    <input type="number" id="societies" name="societies" min="0" max="1" value="1" required><br>
+    <select id="societies" name="societies">
+        <option value="0">0</option>
+        <option value="1" selected>1</option>
+    </select><br>
     <label for="involvement">Mentions patient involvement (0/1):</label><br>
-    <input type="number" id="involvement" name="involvement" min="0" max="1" value="1" required><br>
+    <select id="involvement" name="involvement">
+        <option value="0">0</option>
+        <option value="1" selected>1</option>
+    </select><br>
     <label for="red_flags">Red flags (1: mentions evidence-less therapy or plainly wrong statements):</label><br>
     <select id="red_flags" name="red_flags">
         <option value="0">0</option>

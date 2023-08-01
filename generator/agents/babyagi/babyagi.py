@@ -22,7 +22,7 @@ import sys
 from chromadb.config import Settings
 import sys
 sys.path.append('generator/')
-from config import api_key, output_dir, csv_path
+from config import api_key, output_dir, csv_path, truncate_interval
 
 client = chromadb.Client(Settings(anonymized_telemetry=False))
 
@@ -571,20 +571,15 @@ def main(num_iterations: int, task_index: int, repetition_index: int):
 
 
     truncate_interval = 2
-    #loop = True
     count = 0
-    #print(os.getcwd())
-    #print(output_dir)
     txt_path = os.path.join(output_dir, f"babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
-    #print(txt_path)
     txt_filename = txt_path
     sys.stdout = open(txt_filename, 'a', encoding='utf-8')
-    #print("\n*****TASK LIST*****\n")
 
     for i in range(num_iterations):
         if count !=0 and count % truncate_interval == 0:
             sys.stdout.close()
-            txt_path = os.path.join(output_dir, f"babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-{int(  count/truncate_interval)}_{task_index}_{repetition_index}.txt")
+            txt_path = os.path.join(output_dir, f"babyagi-{LLM_MODEL}/babyagi-{LLM_MODEL}_trunc-{int(count/truncate_interval)}_{task_index}_{repetition_index}.txt")
             txt_filename = txt_path
             sys.stdout = open(txt_filename, 'a', encoding='utf-8')
             print_header()
@@ -671,12 +666,13 @@ if __name__ == "__main__":
     # Parse arguments
     task_index = args[args.index("--task_index") + 1] if "--task_index" in args else 1
     repetition_index = args[args.index("--repetition_index") + 1] if "--repetition_index" in args else 1
+    num_iterations = args[args.index("--num_iterations") + 1] if "--num_iterations" in args else 1
 
     # Convert strings to integers
     task_index = int(task_index)
     repetition_index = int(repetition_index)
-
+    num_iterations = int(num_iterations)
     # Call main function
-    main(num_iterations=NUM_ITERATIONS, task_index=task_index, repetition_index=repetition_index)
+    main(num_iterations, task_index=task_index, repetition_index=repetition_index)
 
 

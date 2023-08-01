@@ -1,0 +1,16 @@
+*****************************
+Test Question:
+Develop an information campaign on cancer prevention for a general audience
+*****************************
+Prompted Input:
+Q: Develop an information campaign on cancer prevention for a general audience
+A: Let's think step by step.
+*****************************
+Namespace(api_time_interval=1.0, cot_trigger="Let's think step by step.", cot_trigger_no=1, direct_answer_trigger_for_fewshot='The answer is', direct_answer_trigger_for_zeroshot='The answer is', direct_answer_trigger_for_zeroshot_cot='The answer is', limit_dataset_size=0, log_dir='./log/', max_length_cot=256, max_length_direct=32, max_num_worker=0, method='zero_shot_cot', model='gpt3', output_dir='./output/', repetition_index=2, task_index=1, temperature=0)
+=========================================
+engine:  text-ada-001
+=========================================
+engine:  text-ada-001
+Output:
+Let's think about what people want and think about what to do about it.1. Let's think about what people want.2. Let's think about what to do about it.3. How can we make this a problem?4. How can we make it a problem?5. What is the problem?6. What should we do about it?7. How can we make this a problem?8. How can we make this a problem?9. What is the problem?10. What should we do about it? The answer is  nothing.
+*****************************

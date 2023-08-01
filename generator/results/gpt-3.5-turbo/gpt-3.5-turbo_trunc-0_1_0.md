@@ -1,22 +1,22 @@
 ## Summary table by gpt-4
 Summary: 
-The AI envisions a hypothetical information campaign aimed at educating the general audience on cancer prevention strategies. These suggestions hinge on understanding risk factors, the importance of regular checkups and vaccinations, considering environmental and work-related risks, and promoting mental wellness. The accuracy of the created model is underlined by the advice to seek professional medical advice. 
+The prompt suggests creating a campaign called "Protect Yourself: Cancer Prevention Starts Today" to raise awareness about cancer prevention among the general public. The campaign would use a mix of traditional and digital platforms to disseminate information, including social media, Public Service Announcements (PSAs), brochures, posters, and community outreach events. It also emphasizes collaboration with media outlets and medical professionals, and evaluation of the campaign's performance.
 
 Main Ideas: 
-- Recognition and management of modifiable risk factors associated with lifestyle choices.
-- Emphasizing routine screenings and preventive vaccinations.
-- Awareness of environmental and occupational risks coupled with the promotion of mental well-being. 
+- Use of a multi-platform approach that encompasses website, social media, PSAs, educational materials, outreach events, awareness campaigns, media collaboration, and online resources.
+- Collaboration with healthcare professionals to provide accurate and up-to-date information.
+- Constant evaluation of the campaign's reach and impact.
 
 Main Finding: 
-- An individual can control several risk factors linked to cancer by lifestyle modifications.
-- Regular screenings enable early identification and treatment of cancer.
-- Mental well-being plays an integral role in cancer prevention.
+- A multi-platform approach can help to integrate important information seamlessly into the daily lives of the target audience.
+- Collaborations with healthcare professionals ensure credibility and factual accuracy of the provided information.
+- Constant evaluation ensures that the campaign is having an impact and allows adjustments to be made, if necessary.
 
 Novelty: 
-5
+7
 
 Feasibility: 
-9
+8
 
 Correctness: 
-10
+9

@@ -1,22 +1,19 @@
 ## Summary table by gpt-4
 Summary: 
-The hypothetical approach for reducing tobacco consumption in a specific European country proposes a comprehensive tobacco control policy. It includes strengthening tobacco control regulations, executing public awareness campaigns, providing accessible smoking cessation services, ensuring enforcement and compliance, supporting tobacco farmers and industry workers, and implementing continuous monitoring and evaluation. The policy will be enforced in a phased manner, overseen by a dedicated regulatory body, and coordinated with international organizations for the best practices.
+The policy proposes a comprehensive approach to reducing tobacco consumption in a hypothetical European country. The plan includes strengthening control laws, raising public awareness and education, promoting quitting support services, and increasing taxes on tobacco products. Other suggestions include stringent law enforcement, funding for relevant research, international cooperation, and regular policy evaluations and reviews.
 
 Main Ideas: 
-1. Strict implementation of tobacco control regulations, like advertising bans and higher taxes. 
-2. Public awareness campaigns, educational drives, and accessible smoking cessation services. 
-3. Continuous monitoring, support for affected workers, and adaptation of international best practices. 
+- Implement stricter control laws and raise smoking age to 21.
+- Intensify public awareness campaigns and tobacco use education.
+- Increase tax on tobacco and provide funding for smoking cessation programs and research.
 
 Main Finding:
-1. A multifaceted approach can effectively control tobacco use, targeting both demand and supply-side factors.
-2. Public awareness and accessible cessation services are vital to encouraging quitting smoking. 
-3. Regulatory measures, transition support, and continuous monitoring can ensure policy success and sustainability. 
+- Increased control laws, taxes and public awareness could reduce tobacco usage.
+- More emphasis on quitting and support systems could aid efforts to reduce consumption.
+- Regular policy reviews and data analysis of consumption rates could ensure continued effectiveness.
 
-Novelty: 
-7
+Novelty: 6
 
-Feasibility: 
-8
+Feasibility: 7
 
-Correctness: 
-9
+Correctness: 8
