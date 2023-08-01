@@ -23,7 +23,6 @@ camel_script = os.path.join(script_dir, "agents/camel-master/examples/code/main.
 cot_script = os.path.join(script_dir, "agents/auto-cot-main/cot_main.py")
 bard_script = os.path.join(script_dir, "agents/bard.py")
 
-task_list = task_list[4:6]
 # For each task
 for index, row in task_list.iterrows():
     # For each repetition
