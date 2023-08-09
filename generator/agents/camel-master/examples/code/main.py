@@ -42,7 +42,8 @@ def main(num_iterations, task_index, repetition_index, model_type=None) -> None:
         task_prompt=task_prompt,
         with_task_specify=True,
         task_specify_agent_kwargs=dict(model=model_type),
-        task_type=TaskType.CODE,
+        #task_type=TaskType.CODE,
+        #task_type=TaskType.SOLUTION_EXTRACTION,
         #extend_sys_msg_meta_dicts=[meta_dict],
         #extend_task_specify_meta_dict=meta_dict,
     )
@@ -62,13 +63,13 @@ def main(num_iterations, task_index, repetition_index, model_type=None) -> None:
     chat_turn_limit, n = num_iterations, 0
     input_assistant_msg, _ = role_play_session.init_chat()
     count = 0
-    txt_path = os.path.join(output_dir, f"camel-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
+    txt_path = os.path.join(output_dir, f"camel-wocode-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
     txt_filename = txt_path
     sys.stdout = open(txt_filename, 'a', encoding='utf-8')
     while n < chat_turn_limit:
         if count !=0 and count % truncate_interval == 0:
             sys.stdout.close()
-            txt_path = os.path.join(output_dir, f"camel-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-{int(count/truncate_interval)}_{task_index}_{repetition_index}.txt")
+            txt_path = os.path.join(output_dir, f"camel-wocode-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-{int(count/truncate_interval)}_{task_index}_{repetition_index}.txt")
             txt_filename = txt_path
             sys.stdout = open(txt_filename, 'a', encoding='utf-8')
         n += 1

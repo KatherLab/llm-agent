@@ -143,12 +143,17 @@
         <option value="0">0</option>
         <option value="1" selected>1</option>
     </select><br>
-    <label for="red_flags">Red flags (1: mentions evidence-less therapy or plainly wrong statements):</label><br>
-    <select id="red_flags" name="red_flags">
-        <option value="0">0</option>
-        <option value="1" selected>1</option>
-    </select><br>
     -->
+    <label for="red_flags"><strong>Red flags</strong></label>
+    <p>-0: statement correct</p>
+    <p>-1: interesting</p>
+    <p>-2: wrong(mentions evidence-less therapy or plainly wrong statements)</p>
+    <select id="red_flags" name="red_flags">
+        <option value="0" selected>0</option>
+        <option value="1" >1</option>
+        <option value="2" >2</option>
+    </select><br>
+
     <input type="submit" value="Submit">
 </form>
 </body>

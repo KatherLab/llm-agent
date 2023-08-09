@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/llm-agent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/llm-agent.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webui/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webui/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webui/scores.db" beforeDir="false" />
+    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="update timestamp in score db">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/215ccb8f-3ced-4b04-85b3-bdc8999306fd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/215ccb8f-3ced-4b04-85b3-bdc8999306fd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator/agents/auto-cot-main/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator/agents/auto-cot-main/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator/agents/auto-cot-main/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator/agents/auto-cot-main/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generator/agents/camel-master/examples/code/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/generator/agents/camel-master/examples/code/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webui/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webui/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,19 +23,23 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2TZ15XyAfnDJTgfv1A5C3YF2iwx" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev__scoredb__test",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -65,5 +66,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/llm_agent$radar_plot_script.coverage" NAME="radar_plot_script Coverage Results" MODIFIED="1690889390466" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visualization/scripts" />
+    <SUITE FILE_PATH="coverage/llm_agent$test_db.coverage" NAME="test_db Coverage Results" MODIFIED="1689769322227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webui" />
+    <SUITE FILE_PATH="coverage/llm_agent$gpt4_summaries_db_old.coverage" NAME="gpt4_summaries_db_old Coverage Results" MODIFIED="1689780396488" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webui" />
+    <SUITE FILE_PATH="coverage/llm_agent$bard.coverage" NAME="bard Coverage Results" MODIFIED="1690549035950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator/agents" />
+    <SUITE FILE_PATH="coverage/llm_agent$tables2pandas.coverage" NAME="tables2pandas Coverage Results" MODIFIED="1688997828718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/llm_agent$generate.coverage" NAME="generate Coverage Results" MODIFIED="1690542225657" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator" />
+    <SUITE FILE_PATH="coverage/llm_agent$summerize.coverage" NAME="summerize Coverage Results" MODIFIED="1690186578490" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator" />
+    <SUITE FILE_PATH="coverage/llm_agent$box_plot_script.coverage" NAME="box_plot_script Coverage Results" MODIFIED="1690889328784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visualization/scripts" />
+    <SUITE FILE_PATH="coverage/llm_agent$app_old.coverage" NAME="app_old Coverage Results" MODIFIED="1690188852315" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webui" />
+    <SUITE FILE_PATH="coverage/llm_agent$app.coverage" NAME="app Coverage Results" MODIFIED="1689776208230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webui" />
+    <SUITE FILE_PATH="coverage/llm_agent$score_plot_script.coverage" NAME="score_plot_script Coverage Results" MODIFIED="1690889320191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visualization/scripts" />
+    <SUITE FILE_PATH="coverage/llm_agent$pipeline.coverage" NAME="pipeline Coverage Results" MODIFIED="1689686352378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator" />
+    <SUITE FILE_PATH="coverage/llm_agent$gpt4_summaries_db.coverage" NAME="gpt4_summaries_db Coverage Results" MODIFIED="1690283109887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/webui" />
+    <SUITE FILE_PATH="coverage/llm_agent$babyagi.coverage" NAME="babyagi Coverage Results" MODIFIED="1689778713915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator/agents/babyagi" />
+    <SUITE FILE_PATH="coverage/llm_agent$llama2.coverage" NAME="llama2 Coverage Results" MODIFIED="1690788490426" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator/agents" />
+    <SUITE FILE_PATH="coverage/llm_agent$config.coverage" NAME="config Coverage Results" MODIFIED="1690548597259" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator" />
   </component>
 </project>
