@@ -81,7 +81,7 @@ def decoder_for_gpt3(args, input, max_length):
     print("engine: ", engine)
         
     if ("few_shot" in args.method or "auto" in args.method)  and engine == "code-davinci-002":
-        response = openai.Completion.create(
+        response = openai.ChatCompletion.create(
           engine=engine,
           prompt=input,
           max_tokens=max_length,
@@ -92,7 +92,8 @@ def decoder_for_gpt3(args, input, max_length):
           stop=["\n"]
         )
     else:
-        response = openai.Completion.create(
+        '''
+        response = openai.ChatCompletion.create(
             engine=engine,
             prompt=input,
             max_tokens=max_length,
@@ -102,8 +103,19 @@ def decoder_for_gpt3(args, input, max_length):
             presence_penalty=0,
             stop=None
         )
+'''
+        response = openai.ChatCompletion.create(
+            model=engine,
+            messages=[
+    {"role": "system", "content": "You are a medical advisor."},
+    {"role": "user", "content": input}
+  ],
+            temperature=args.temperature,
+            max_tokens=max_length,
+            n=1,
+        )
 
-    return response["choices"][0]["text"]
+    return response["choices"][0]["message"]["content"]
 
 class Decoder():
     def __init__(self):

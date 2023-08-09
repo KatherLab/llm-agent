@@ -1,0 +1,221 @@
+Index: generator/agents/camel-master/examples/code/main.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========\n# Licensed under the Apache License, Version 2.0 (the “License”);\n# you may not use this file except in compliance with the License.\n# You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an “AS IS” BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n# =========== Copyright 2023 @ CAMEL-AI.org. All Rights Reserved. ===========\nimport pandas as pd\nfrom colorama import Fore\n\nfrom camel.societies import RolePlaying\nfrom camel.typing import TaskType\nfrom camel.utils import print_text_animated\nimport sys\nsys.path.append('generator/')\nfrom config import api_key, output_dir, csv_path, num_iterations, truncate_interval\n# insert api key into os environment\nimport os\nLLM_MODEL = \"gpt4\"\nif api_key:\n    os.environ['OPENAI_API_KEY'] = api_key\n\ndef main(num_iterations, task_index, repetition_index, model_type=None) -> None:\n    task_list = pd.read_csv(csv_path)\n    row = task_list.loc[task_list['index'] == int(task_index)].iloc[0]\n    eu_prompt = row['Prompt*']\n    task_prompt = eu_prompt\n    #language = \"JavaScript\"\n    domain = \"evaluating EU health policy\"\n    meta_dict = {\"domain\": domain}\n    role_play_session = RolePlaying(\n        assistant_role_name=f\"Medical advisor.\",\n        assistant_agent_kwargs=dict(model=model_type),\n        user_role_name=f\"Person working in {domain}\",\n        user_agent_kwargs=dict(model=model_type),\n        task_prompt=task_prompt,\n        with_task_specify=True,\n        task_specify_agent_kwargs=dict(model=model_type),\n        task_type=TaskType.CODE,\n        #extend_sys_msg_meta_dicts=[meta_dict],\n        #extend_task_specify_meta_dict=meta_dict,\n    )\n\n    print(\n        Fore.GREEN +\n        f\"AI Assistant sys message:\\n{role_play_session.assistant_sys_msg}\\n\")\n    print(Fore.BLUE +\n          f\"AI User sys message:\\n{role_play_session.user_sys_msg}\\n\")\n\n    print(Fore.YELLOW + f\"Original task prompt:\\n{task_prompt}\\n\")\n    print(\n        Fore.CYAN +\n        f\"Specified task prompt:\\n{role_play_session.specified_task_prompt}\\n\")\n    print(Fore.RED + f\"Final task prompt:\\n{role_play_session.task_prompt}\\n\")\n\n    chat_turn_limit, n = num_iterations, 0\n    input_assistant_msg, _ = role_play_session.init_chat()\n    count = 0\n    txt_path = os.path.join(output_dir, f\"camel-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt\")\n    txt_filename = txt_path\n    sys.stdout = open(txt_filename, 'a', encoding='utf-8')\n    while n < chat_turn_limit:\n        if count !=0 and count % truncate_interval == 0:\n            sys.stdout.close()\n            txt_path = os.path.join(output_dir, f\"camel-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-{int(count/truncate_interval)}_{task_index}_{repetition_index}.txt\")\n            txt_filename = txt_path\n            sys.stdout = open(txt_filename, 'a', encoding='utf-8')\n        n += 1\n        assistant_response, user_response = role_play_session.step(\n            input_assistant_msg)\n\n        input_assistant_msg = assistant_response.msg\n\n        if assistant_response.terminated:\n            print(Fore.GREEN +\n                  (\"AI Assistant terminated. Reason: \"\n                   f\"{assistant_response.info['termination_reasons']}.\"))\n            break\n        if user_response.terminated:\n            print(Fore.GREEN +\n                  (\"AI User terminated. \"\n                   f\"Reason: {user_response.info['termination_reasons']}.\"))\n            break\n\n        print_text_animated(Fore.BLUE +\n                            f\"AI User:\\n\\n{user_response.msg.content}\\n\")\n        print_text_animated(Fore.GREEN + \"AI Assistant:\\n\\n\"\n                            f\"{assistant_response.msg.content}\\n\")\n\n        if \"CAMEL_TASK_DONE\" in user_response.msg.content:\n            break\n\n\nif __name__ == \"__main__\":\n    # Extract command line arguments. Skip the first one because it's the script name.\n    args = sys.argv[1:]\n\n    # Parse arguments\n    task_index = args[args.index(\"--task_index\") + 1] if \"--task_index\" in args else 1\n    repetition_index = args[args.index(\"--repetition_index\") + 1] if \"--repetition_index\" in args else 1\n    num_iterations = args[args.index(\"--num_iterations\") + 1] if \"--num_iterations\" in args else 1\n\n    # Convert strings to integers\n    task_index = int(task_index)\n    repetition_index = int(repetition_index)\n    num_iterations = int(num_iterations)\n\n    # Call main function\n    main(num_iterations, task_index, repetition_index)\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/generator/agents/camel-master/examples/code/main.py b/generator/agents/camel-master/examples/code/main.py
+--- a/generator/agents/camel-master/examples/code/main.py	(revision 70ad8b4dfbc6da270ea66f127bacc74c96f6aa04)
++++ b/generator/agents/camel-master/examples/code/main.py	(date 1691578637047)
+@@ -42,7 +42,8 @@
+         task_prompt=task_prompt,
+         with_task_specify=True,
+         task_specify_agent_kwargs=dict(model=model_type),
+-        task_type=TaskType.CODE,
++        #task_type=TaskType.CODE,
++        #task_type=TaskType.SOLUTION_EXTRACTION,
+         #extend_sys_msg_meta_dicts=[meta_dict],
+         #extend_task_specify_meta_dict=meta_dict,
+     )
+@@ -62,13 +63,13 @@
+     chat_turn_limit, n = num_iterations, 0
+     input_assistant_msg, _ = role_play_session.init_chat()
+     count = 0
+-    txt_path = os.path.join(output_dir, f"camel-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
++    txt_path = os.path.join(output_dir, f"camel-wocode-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-0_{task_index}_{repetition_index}.txt")
+     txt_filename = txt_path
+     sys.stdout = open(txt_filename, 'a', encoding='utf-8')
+     while n < chat_turn_limit:
+         if count !=0 and count % truncate_interval == 0:
+             sys.stdout.close()
+-            txt_path = os.path.join(output_dir, f"camel-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-{int(count/truncate_interval)}_{task_index}_{repetition_index}.txt")
++            txt_path = os.path.join(output_dir, f"camel-wocode-{LLM_MODEL}/camel-{LLM_MODEL}_trunc-{int(count/truncate_interval)}_{task_index}_{repetition_index}.txt")
+             txt_filename = txt_path
+             sys.stdout = open(txt_filename, 'a', encoding='utf-8')
+         n += 1
+Index: generator/agents/auto-cot-main/api.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import argparse\nimport sys\n\nfrom utils import *\n\ndef cot(method, question, output_dir, task_index, repetition_index):\n    global method_name\n    LLM_MODEL = \"gpt3\"\n    args = parse_arguments()\n    decoder = Decoder()\n\n    args.method = method\n    args.model = LLM_MODEL\n    if args.method != \"zero_shot_cot\":\n        if args.method == \"auto_cot\":\n            args.demo_path = \"generator/agents/auto-cot-main/demos/multiarith_auto\"\n        else:\n            args.demo_path = \"generator/agents/auto-cot-main/demos/multiarith_manual\"\n        demo = create_demo_text(args, cot_flag=True)\n    else:\n        demo = None\n    if method == \"zero_shot\":\n        method_name = \"zero-shot\"\n    elif method == \"zero_shot_cot\":\n        method_name = \"zero-shot-cot\"\n    elif method == \"manual_cot\":\n        method_name = \"manual-cot\"\n\n    txt_path = os.path.join(output_dir, f\"cot-{LLM_MODEL}-{method_name}/cot-{LLM_MODEL}-{method_name}_trunc-0_{task_index}_{repetition_index}.txt\")\n    txt_filename = txt_path\n    sys.stdout = open(txt_filename, 'a', encoding='utf-8')\n\n    x = \"Q: \" + question + \"\\n\" + \"A:\"\n    print('*****************************')\n    print(\"Test Question:\")\n    print(question)\n    print('*****************************')\n\n    if args.method == \"zero_shot\":\n        x = x + \" \" + args.direct_answer_trigger_for_zeroshot\n    elif args.method == \"zero_shot_cot\":\n        x = x + \" \" + args.cot_trigger\n    elif args.method == \"manual_cot\":\n        x = demo + x\n    elif args.method == \"auto_cot\":\n        x = demo + x + \" \" + args.cot_trigger\n    else:\n        raise ValueError(\"method is not properly defined ...\")\n\n    print(\"Prompted Input:\")\n    print(x.replace(\"\\n\\n\", \"\\n\").strip())\n    print('*****************************')\n\n    max_length = args.max_length_cot if \"cot\" in args.method else args.max_length_direct\n    print(args)\n    z = decoder.decode(args, x, max_length)\n    z = z.replace(\"\\n\\n\", \"\\n\").replace(\"\\n\", \"\").strip()\n    if args.method == \"zero_shot_cot\":\n        z2 = x + z + \" \" + args.direct_answer_trigger_for_zeroshot_cot\n        max_length = args.max_length_direct\n        pred = decoder.decode(args, z2, max_length)\n        print(\"Output:\")\n        print(z + \" \" + args.direct_answer_trigger_for_zeroshot_cot + \" \" + pred)\n        print('*****************************')\n    else:\n        pred = z\n        print(\"Output:\")\n        print(pred)\n        print('*****************************')\n\ndef parse_arguments():\n    parser = argparse.ArgumentParser(description=\"Zero-shot-CoT\")\n\n    parser.add_argument(\"--max_num_worker\", type=int, default=0, help=\"maximum number of workers for dataloader\")\n    parser.add_argument(\n        \"--model\", type=str, default=\"gpt4\", help=\"model used for decoding. Note that 'gpt3' are the smallest models.\"\n    )\n    parser.add_argument(\n        \"--method\", type=str, default=\"auto_cot\", choices=[\"zero_shot\", \"zero_shot_cot\", \"few_shot\", \"few_shot_cot\", \"auto_cot\"], help=\"method\"\n    )\n    parser.add_argument(\n        \"--cot_trigger_no\", type=int, default=1, help=\"A trigger sentence that elicits a model to execute chain of thought\"\n    )\n    parser.add_argument(\n        \"--max_length_cot\", type=int, default=256, help=\"maximum length of output tokens by model for reasoning extraction\"\n    )\n    parser.add_argument(\n        \"--max_length_direct\", type=int, default=32, help=\"maximum length of output tokens by model for answer extraction\"\n    )\n    parser.add_argument(\n        \"--limit_dataset_size\", type=int, default=0, help=\"whether to limit test dataset size. if 0, the dataset size is unlimited and we use all the samples in the dataset for testing.\"\n    )\n    parser.add_argument(\n        \"--api_time_interval\", type=float, default=1.0, help=\"\"\n    )\n    parser.add_argument(\n        \"--temperature\", type=float, default=0, help=\"\"\n    )\n    parser.add_argument(\n        \"--log_dir\", type=str, default=\"./log/\", help=\"log directory\"\n    )\n    parser.add_argument(\"--repetition_index\", type=int, default=0, help=\"repetition index\")\n    parser.add_argument(\"--task_index\", type=int, default=0, help=\"task index\")\n    parser.add_argument(\"--output_dir\", type=str, default=\"./output/\", help=\"output directory\")\n    args = parser.parse_args()\n\n    args.direct_answer_trigger_for_fewshot = \"The answer is\"\n    args.direct_answer_trigger_for_zeroshot = \"The answer is\"\n    args.direct_answer_trigger_for_zeroshot_cot = \"The answer is\"\n    args.cot_trigger = \"Let's think step by step.\"\n\n    return args
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/generator/agents/auto-cot-main/api.py b/generator/agents/auto-cot-main/api.py
+--- a/generator/agents/auto-cot-main/api.py	(revision 70ad8b4dfbc6da270ea66f127bacc74c96f6aa04)
++++ b/generator/agents/auto-cot-main/api.py	(date 1691580346791)
+@@ -5,7 +5,7 @@
+ 
+ def cot(method, question, output_dir, task_index, repetition_index):
+     global method_name
+-    LLM_MODEL = "gpt3"
++    LLM_MODEL = "gpt-4"
+     args = parse_arguments()
+     decoder = Decoder()
+ 
+@@ -26,7 +26,7 @@
+     elif method == "manual_cot":
+         method_name = "manual-cot"
+ 
+-    txt_path = os.path.join(output_dir, f"cot-{LLM_MODEL}-{method_name}/cot-{LLM_MODEL}-{method_name}_trunc-0_{task_index}_{repetition_index}.txt")
++    txt_path = os.path.join(output_dir, f"cot-improved-{LLM_MODEL}-{method_name}/cot-{LLM_MODEL}-{method_name}_trunc-0_{task_index}_{repetition_index}.txt")
+     txt_filename = txt_path
+     sys.stdout = open(txt_filename, 'a', encoding='utf-8')
+ 
+@@ -47,12 +47,12 @@
+     else:
+         raise ValueError("method is not properly defined ...")
+ 
+-    print("Prompted Input:")
+-    print(x.replace("\n\n", "\n").strip())
+-    print('*****************************')
++    #print("Prompted Input:")
++    #print(x.replace("\n\n", "\n").strip())
++    #print('*****************************')
+ 
+     max_length = args.max_length_cot if "cot" in args.method else args.max_length_direct
+-    print(args)
++    #print(args)
+     z = decoder.decode(args, x, max_length)
+     z = z.replace("\n\n", "\n").replace("\n", "").strip()
+     if args.method == "zero_shot_cot":
+@@ -82,10 +82,10 @@
+         "--cot_trigger_no", type=int, default=1, help="A trigger sentence that elicits a model to execute chain of thought"
+     )
+     parser.add_argument(
+-        "--max_length_cot", type=int, default=256, help="maximum length of output tokens by model for reasoning extraction"
++        "--max_length_cot", type=int, default=4096, help="maximum length of output tokens by model for reasoning extraction"
+     )
+     parser.add_argument(
+-        "--max_length_direct", type=int, default=32, help="maximum length of output tokens by model for answer extraction"
++        "--max_length_direct", type=int, default=512, help="maximum length of output tokens by model for answer extraction"
+     )
+     parser.add_argument(
+         "--limit_dataset_size", type=int, default=0, help="whether to limit test dataset size. if 0, the dataset size is unlimited and we use all the samples in the dataset for testing."
+Index: generator/agents/auto-cot-main/utils.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>'''\nAdapted from https://github.com/kojima-takeshi188/zero_shot_cot\n'''\nimport sys\nfrom statistics import mean\nfrom torch.utils.data import Dataset\nimport openai\nimport os\nimport multiprocessing\nimport json\nimport numpy as np\nimport torch\nimport re\nimport random\nimport time\nimport datetime\n\ndef shuffleDict(d):\n  keys = list(d.keys())\n  random.shuffle(keys)\n  [(key, d[key]) for key in keys]\n  random.shuffle(keys)\n  [(key, d[key]) for key in keys]\n  random.shuffle(keys)\n  keys = [(key, d[key]) for key in keys]\n  #keys = d(keys)\n  return dict(keys)\n  \ndef fix_seed(seed):\n    # random\n    random.seed(seed)\n    # Numpy\n    np.random.seed(seed)\n    # Pytorch\n    torch.manual_seed(seed)\n    torch.cuda.manual_seed_all(seed)\n    torch.backends.cudnn.deterministic = True\n    \ndef print_now(return_flag=0):\n    t_delta = datetime.timedelta(hours=9)\n    JST = datetime.timezone(t_delta, 'JST')\n    now = datetime.datetime.now(JST)\n    now = now.strftime('%Y/%m/%d %H:%M:%S')\n    if return_flag == 0:\n        print(now)\n    elif return_flag == 1:\n        return now\n    else:\n        pass\n\n# Sentence Generator (Decoder) for GPT-3 ...\ndef decoder_for_gpt3(args, input, max_length):\n    \n    # GPT-3 API allows each users execute the API within 60 times in a minute ...\n    # time.sleep(1)\n    time.sleep(args.api_time_interval)\n    \n    # https://beta.openai.com/account/api-keys\n    # openai.api_key = \"[Your OpenAI API Key]\"\n    \n    # Specify engine ...\n    # Instruct GPT3\n    if args.model == \"gpt3\":\n        engine = \"text-ada-001\"\n    elif args.model == \"gpt3-medium\":\n        engine = \"text-babbage-001\"\n    elif args.model == \"gpt3-large\":\n        engine = \"text-curie-001\"\n    elif args.model == \"gpt3-xl\":\n        engine = \"text-davinci-002\"\n    elif args.model == \"text-davinci-001\":\n        engine = \"text-davinci-001\"\n    elif args.model == \"code-davinci-002\":\n        engine = \"code-davinci-002\"\n    elif args.model == \"gpt-4\":\n        engine = \"gpt-4\"\n    else:\n        raise ValueError(\"model is not properly defined ...\")\n\n    print(\"=========================================\")\n    print(\"engine: \", engine)\n        \n    if (\"few_shot\" in args.method or \"auto\" in args.method)  and engine == \"code-davinci-002\":\n        response = openai.Completion.create(\n          engine=engine,\n          prompt=input,\n          max_tokens=max_length,\n          temperature=args.temperature,\n          top_p=1,\n          frequency_penalty=0,\n          presence_penalty=0,\n          stop=[\"\\n\"]\n        )\n    else:\n        response = openai.Completion.create(\n            engine=engine,\n            prompt=input,\n            max_tokens=max_length,\n            temperature=args.temperature,\n            top_p=1,\n            frequency_penalty=0,\n            presence_penalty=0,\n            stop=None\n        )\n\n    return response[\"choices\"][0][\"text\"]\n\nclass Decoder():\n    def __init__(self):\n        # print_now()\n        pass\n \n    def decode(self, args, input, max_length):\n        response = decoder_for_gpt3(args, input, max_length)\n        return response\n\ndef data_reader(args):\n\n    questions = []\n    answers = []\n    decoder = json.JSONDecoder()\n\n    if args.dataset == \"aqua\":\n      with open(args.dataset_path) as f:\n        lines = f.readlines()\n        for line in lines:\n          json_res = decoder.raw_decode(line)[0]\n          choice = \"(\" + \"(\".join(json_res[\"options\"])\n          choice = choice.replace(\"(\", \" (\").replace(\")\", \") \")\n          choice = \"Answer Choices:\" + choice\n          questions.append(json_res[\"question\"].strip() + \" \" + choice)\n          answers.append(json_res[\"correct\"])\n  \n    elif args.dataset == \"gsm8k\":\n      with open(args.dataset_path) as f:\n        lines = f.readlines()\n        for line in lines:\n          json_res = decoder.raw_decode(line)[0]\n          questions.append(json_res[\"question\"].strip())\n          answers.append(json_res[\"answer\"].split(\"#### \")[-1])\n  \n    elif args.dataset == \"commonsensqa\":\n      with open(args.dataset_path) as f:\n        lines = f.readlines()\n        for line in lines:\n          json_res = decoder.raw_decode(line)[0]\n          choice = \"Answer Choices:\"\n          for c in json_res[\"question\"][\"choices\"]:\n              choice += \" (\"\n              choice += c[\"label\"]\n              choice += \") \"\n              choice += c[\"text\"]\n          questions.append(json_res[\"question\"][\"stem\"].strip() + \" \" + choice)\n          answers.append(json_res[\"answerKey\"])\n\n    elif args.dataset in (\"addsub\", \"multiarith\", \"singleeq\"):\n      with open(args.dataset_path) as f:\n        json_data = json.load(f)\n        for line in json_data:\n          q = line[\"sQuestion\"].strip()\n          a = str(line[\"lSolutions\"][0])\n          if a[-2:] == \".0\":\n              a = a[:-2]\n          questions.append(q)\n          answers.append(a)\n        \n    elif args.dataset == \"strategyqa\":\n      with open(args.dataset_path) as f:\n        json_data = json.load(f)[\"examples\"]\n        for line in json_data:\n          q = line[\"input\"].strip()\n          a = int(line[\"target_scores\"][\"Yes\"])\n          if a == 1:\n              a = \"yes\"\n          else:\n              a = \"no\"\n          questions.append(q)\n          answers.append(a)\n        \n    elif args.dataset == \"svamp\":\n      with open(args.dataset_path) as f:\n        json_data = json.load(f)\n        for line in json_data:\n            q = line[\"Body\"].strip() + \" \" + line[\"Question\"].strip()\n            a = str(line[\"Answer\"])\n            if a[-2:] == \".0\":\n                a = a[:-2]\n            questions.append(q)\n            answers.append(a)\n            \n    elif args.dataset in (\"bigbench_date\", \"object_tracking\"):\n      with open(args.dataset_path) as f:\n        json_data = json.load(f)\n        json_data = json_data[\"examples\"]\n        if args.dataset == \"bigbench_date\":\n            choice_index = ['A','B','C','D','E','F']\n        elif args.dataset in (\"object_tracking\"):\n            choice_index = ['A','B','C']\n        else:\n            raise ValueError(\"dataset is not properly defined ...\")\n        for line in json_data:\n          q = line[\"input\"].strip()\n          if args.dataset == \"bigbench_date\":\n              choice = \"Answer Choices:\"\n              # Randomly shuffle the answer choice dictionary because the original answer is always A ...\n              choice_dic = shuffleDict(line[\"target_scores\"])\n          elif args.dataset == \"object_tracking\":\n              choice = \"\\nWhich choice is true ? Answer Choices:\"\n              choice_dic = line[\"target_scores\"]\n          else:\n              raise ValueError(\"dataset is not properly defined ...\")\n          for i, key_value in enumerate(choice_dic.items()):\n              key, value = key_value\n              choice += \" (\"\n              choice += choice_index[i]\n              choice += \") \"\n              choice += key\n              if value == 1:\n                  a = choice_index[i]\n                  #a = key\n          q = q + \" \" + choice\n          questions.append(q)\n          answers.append(a)            \n          \n    elif args.dataset in (\"coin_flip\", \"last_letters\"):\n      with open(args.dataset_path) as f:\n        json_data = json.load(f)\n        json_data = json_data[\"examples\"]\n        for line in json_data:\n          q = line[\"question\"]\n          a = line[\"answer\"]\n          questions.append(q)\n          answers.append(a)\n        \n    else:\n        raise ValueError(\"dataset is not properly defined ...\")\n    \n    q_len_list = []\n    for q in questions:\n        q_len_list.append(len(q.split(\" \")))\n    q_len_mean = mean(q_len_list)\n    \n    print(\"dataset : {}\".format(args.dataset))\n    print(\"data size : {}\".format(len(answers)))\n    print(\"average num of words for each sample : {}\".format(q_len_mean))\n    \n    return questions, answers\n\n# Create dataset object before dataloader ...\nclass MyDataset(Dataset):\n    def __init__(self, args):\n        super().__init__()\n        self.questions, self.answers = data_reader(args)\n        self.len = len(self.questions)\n        \n    def __len__(self):\n        return self.len\n    \n    def __getitem__(self, index):\n        input = self.questions[index]\n        output = self.answers[index]\n        return input, output\n\ndef setup_data_loader(args):\n\n    # fix randomness of dataloader to ensure reproducibility\n    # https://pytorch.org/docs/stable/notes/randomness.html\n    fix_seed(args.random_seed)\n    worker_seed = torch.initial_seed() % 2**32\n    print(\"worker_seed : {}\".format(worker_seed))\n    def seed_worker(worker_id):\n        np.random.seed(worker_seed)\n        random.seed(worker_seed)\n    g = torch.Generator()\n    g.manual_seed(worker_seed)\n    \n    dataloader_num_workers = multiprocessing.cpu_count()\n    dataloader_num_workers = min(dataloader_num_workers, args.max_num_worker)\n    print(\"dataloader_num_workers: \" + str(dataloader_num_workers))\n    \n    dataset = MyDataset(args)\n    \n    dataloader = torch.utils.data.DataLoader(dataset,\n                  shuffle=True,\n                  batch_size=args.minibatch_size,\n                  drop_last=False,\n                  num_workers=dataloader_num_workers,\n                  worker_init_fn=seed_worker,\n                  generator=g,\n                  pin_memory=True)\n\n    return dataloader\n\n# ver 0.2\ndef answer_cleansing(args, pred, must_choice=False):\n\n    print(\"pred_before : \" + pred)\n    \n    if args.method in (\"few_shot\", \"few_shot_cot\", \"auto_cot\"):\n        preds = pred.split(args.direct_answer_trigger_for_fewshot)\n        answer_flag = True if len(preds) > 1 else False \n        pred = preds[-1]\n\n    if args.dataset in (\"aqua\", \"commonsensqa\"):\n        pred = re.findall(r'A|B|C|D|E', pred)\n    elif args.dataset == \"bigbench_date\":\n        pred = re.findall(r'A|B|C|D|E|F', pred)\n    elif args.dataset in (\"object_tracking\"):\n        pred = re.findall(r'A|B|C', pred)\n    elif args.dataset in (\"gsm8k\", \"addsub\", \"multiarith\", \"svamp\", \"singleeq\"):\n        if must_choice:\n            pred = re.findall(r'A|B|C|D', pred)\n        else:\n            pred = pred.replace(\",\", \"\")\n            pred = [s for s in re.findall(r'-?\\d+\\.?\\d*', pred)]\n    elif args.dataset in (\"strategyqa\", \"coin_flip\"):\n        pred = pred.lower()\n        pred = re.sub(\"\\\"|\\'|\\n|\\.|\\s|\\:|\\,\",\" \", pred)\n        pred = pred.split(\" \")\n        pred = [i for i in pred if i in (\"yes\", \"no\")]\n    elif args.dataset == \"last_letters\":\n        pred = re.sub(\"\\\"|\\'|\\n|\\.|\\s\",\"\", pred)\n        pred = [pred]\n    else:\n        raise ValueError(\"dataset is not properly defined ...\")\n\n    # If there is no candidate in list, null is set.\n    if len(pred) == 0:\n        pred = \"\"\n    else:\n        if args.method in (\"few_shot\", \"few_shot_cot\", \"auto_cot\"):\n            if answer_flag:\n                # choose the first element in list ...\n                pred = pred[0]\n            else:\n                # choose the last element in list ...\n                pred = pred[-1]\n        elif args.method in (\"zero_shot\", \"zero_shot_cot\"):\n            # choose the first element in list ...\n            pred = pred[0]\n        else:\n            raise ValueError(\"method is not properly defined ...\")\n    \n    # (For arithmetic tasks) if a word ends with period, it will be omitted ...\n    if pred != \"\":\n        if pred[-1] == \".\":\n            pred = pred[:-1]\n    \n    print(\"pred_after : \" + pred)\n    \n    return pred\n\ndef create_demo_text(args, cot_flag):\n    x, z, y = [], [], []\n    sys.path.append(\"generator/agents/auto-cot-main\")\n    with open(args.demo_path, encoding=\"utf-8\") as f:\n        json_data = json.load(f)\n        json_data = json_data[\"demo\"]\n        for line in json_data:\n            x.append(line[\"question\"])\n            z.append(line[\"rationale\"])\n            y.append(line[\"pred_ans\"])\n\n    index_list = list(range(len(x)))\n    \n    demo_text = \"\"\n    for i in index_list:\n        if cot_flag:\n            demo_text += x[i] + \" \" + z[i] + \" \" + \\\n                         args.direct_answer_trigger_for_fewshot + \" \" + y[i] + \".\\n\\n\"\n        else:\n            demo_text += x[i] + \" \" + args.direct_answer_trigger_for_fewshot + \" \" + y[i] + \".\\n\\n\"\n    return demo_text\n\ndef answer_cleansing_zero_shot(args, pred, must_choice=False):\n    pred = pred.strip()\n    if args.dataset in (\"aqua\", \"commonsensqa\"):\n        pred = re.findall(r'A|B|C|D|E', pred)\n    elif args.dataset == \"bigbench_date\":\n        pred = re.findall(r'A|B|C|D|E|F', pred)\n    elif args.dataset in (\"object_tracking\"):\n        pred = re.findall(r'A|B|C', pred)\n    elif args.dataset in (\"gsm8k\", \"addsub\", \"multiarith\", \"svamp\", \"singleeq\"):\n        if must_choice:\n            pred = re.findall(r'A|B|C|D', pred)\n        else:\n            pred = pred.replace(\",\", \"\")\n            pred = [s for s in re.findall(r'-?\\d+\\.?\\d*', pred)]\n    elif args.dataset in (\"strategyqa\", \"coin_flip\"):\n        pred = pred.lower()\n        pred = re.sub(\"\\\"|\\'|\\n|\\.|\\s|\\:|\\,\", \" \", pred)\n        pred = pred.split(\" \")\n        pred = [i for i in pred if i in (\"yes\", \"no\")]\n    elif args.dataset == \"last_letters\":\n        pred = re.sub(\"\\\"|\\'|\\n|\\.|\\s\", \"\", pred)\n        pred = [pred]\n    else:\n        raise ValueError(\"dataset is not properly defined ...\")\n\n    # If there is no candidate in list, null is set.\n    if len(pred) == 0:\n        pred = \"\"\n    else:\n        # choose the first element in list ...\n        pred = pred[0]\n\n    # (For arithmetic tasks) if a word ends with period, it will be omitted ...\n    if pred != \"\":\n        if pred[-1] == \".\":\n            pred = pred[:-1]\n\n    return pred\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/generator/agents/auto-cot-main/utils.py b/generator/agents/auto-cot-main/utils.py
+--- a/generator/agents/auto-cot-main/utils.py	(revision 70ad8b4dfbc6da270ea66f127bacc74c96f6aa04)
++++ b/generator/agents/auto-cot-main/utils.py	(date 1691580346795)
+@@ -81,7 +81,7 @@
+     print("engine: ", engine)
+         
+     if ("few_shot" in args.method or "auto" in args.method)  and engine == "code-davinci-002":
+-        response = openai.Completion.create(
++        response = openai.ChatCompletion.create(
+           engine=engine,
+           prompt=input,
+           max_tokens=max_length,
+@@ -92,7 +92,8 @@
+           stop=["\n"]
+         )
+     else:
+-        response = openai.Completion.create(
++        '''
++        response = openai.ChatCompletion.create(
+             engine=engine,
+             prompt=input,
+             max_tokens=max_length,
+@@ -102,8 +103,19 @@
+             presence_penalty=0,
+             stop=None
+         )
++'''
++        response = openai.ChatCompletion.create(
++            model=engine,
++            messages=[
++    {"role": "system", "content": "You are a medical advisor."},
++    {"role": "user", "content": input}
++  ],
++            temperature=args.temperature,
++            max_tokens=max_length,
++            n=1,
++        )
+ 
+-    return response["choices"][0]["text"]
++    return response["choices"][0]["message"]["content"]
+ 
+ class Decoder():
+     def __init__(self):
+Index: .idea/dataSources.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"DataSourceManagerImpl\" format=\"xml\" multifile-model=\"true\">\n    <data-source source=\"LOCAL\" name=\"scores\" uuid=\"57392866-543b-4153-8b65-9614106e73d8\">\n      <driver-ref>sqlite.xerial</driver-ref>\n      <synchronize>true</synchronize>\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\n      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/webui/scores.db</jdbc-url>\n      <working-dir>$ProjectFileDir$</working-dir>\n      <libraries>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n      </libraries>\n    </data-source>\n    <data-source source=\"LOCAL\" name=\"GPT4_summaries [2]\" uuid=\"76e7780d-f0d2-4c85-99aa-3e266fcc584c\">\n      <driver-ref>sqlite.xerial</driver-ref>\n      <synchronize>true</synchronize>\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\n      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/webui/GPT4_summaries.db</jdbc-url>\n      <working-dir>$ProjectFileDir$</working-dir>\n      <libraries>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n      </libraries>\n    </data-source>\n    <data-source source=\"LOCAL\" name=\"scores [2]\" uuid=\"6d8d720b-9294-4972-b354-af5ace1ca22c\">\n      <driver-ref>sqlite.xerial</driver-ref>\n      <synchronize>true</synchronize>\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\n      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/scores.db</jdbc-url>\n      <working-dir>$ProjectFileDir$</working-dir>\n      <libraries>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n      </libraries>\n    </data-source>\n    <data-source source=\"LOCAL\" name=\"GPT4_summaries\" uuid=\"f88905df-b298-4fdc-92ad-0c69db7ac522\">\n      <driver-ref>sqlite.xerial</driver-ref>\n      <synchronize>true</synchronize>\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\n      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/GPT4_summaries.db</jdbc-url>\n      <working-dir>$ProjectFileDir$</working-dir>\n      <libraries>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n      </libraries>\n    </data-source>\n    <data-source source=\"LOCAL\" name=\"GPT4_summaries [3]\" uuid=\"c39f13a0-4d4b-49dc-b881-69b0c78cd984\">\n      <driver-ref>sqlite.xerial</driver-ref>\n      <synchronize>true</synchronize>\n      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>\n      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/visualization/scripts/GPT4_summaries.db</jdbc-url>\n      <working-dir>$ProjectFileDir$</working-dir>\n      <libraries>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n        <library>\n          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>\n        </library>\n      </libraries>\n    </data-source>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/dataSources.xml b/.idea/dataSources.xml
+--- a/.idea/dataSources.xml	(revision 70ad8b4dfbc6da270ea66f127bacc74c96f6aa04)
++++ b/.idea/dataSources.xml	(date 1690972739251)
+@@ -1,65 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+-    <data-source source="LOCAL" name="scores" uuid="57392866-543b-4153-8b65-9614106e73d8">
++    <data-source source="LOCAL" name="scores" uuid="0f9800ad-8e24-413b-a498-a7e0d3d8be50">
+       <driver-ref>sqlite.xerial</driver-ref>
+       <synchronize>true</synchronize>
+       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/webui/scores.db</jdbc-url>
+-      <working-dir>$ProjectFileDir$</working-dir>
+-      <libraries>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+-        </library>
+-      </libraries>
+-    </data-source>
+-    <data-source source="LOCAL" name="GPT4_summaries [2]" uuid="76e7780d-f0d2-4c85-99aa-3e266fcc584c">
+-      <driver-ref>sqlite.xerial</driver-ref>
+-      <synchronize>true</synchronize>
+-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/webui/GPT4_summaries.db</jdbc-url>
+-      <working-dir>$ProjectFileDir$</working-dir>
+-      <libraries>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+-        </library>
+-      </libraries>
+-    </data-source>
+-    <data-source source="LOCAL" name="scores [2]" uuid="6d8d720b-9294-4972-b354-af5ace1ca22c">
+-      <driver-ref>sqlite.xerial</driver-ref>
+-      <synchronize>true</synchronize>
+-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/scores.db</jdbc-url>
+-      <working-dir>$ProjectFileDir$</working-dir>
+-      <libraries>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+-        </library>
+-      </libraries>
+-    </data-source>
+-    <data-source source="LOCAL" name="GPT4_summaries" uuid="f88905df-b298-4fdc-92ad-0c69db7ac522">
+-      <driver-ref>sqlite.xerial</driver-ref>
+-      <synchronize>true</synchronize>
+-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/GPT4_summaries.db</jdbc-url>
+-      <working-dir>$ProjectFileDir$</working-dir>
+-      <libraries>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+-        </library>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+-        </library>
+-        <library>
+-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.40.1/org/xerial/sqlite-jdbc/3.40.1.0/sqlite-jdbc-3.40.1.0.jar</url>
+-        </library>
+-      </libraries>
+-    </data-source>
+-    <data-source source="LOCAL" name="GPT4_summaries [3]" uuid="c39f13a0-4d4b-49dc-b881-69b0c78cd984">
+-      <driver-ref>sqlite.xerial</driver-ref>
+-      <synchronize>true</synchronize>
+-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/visualization/scripts/GPT4_summaries.db</jdbc-url>
+       <working-dir>$ProjectFileDir$</working-dir>
+       <libraries>
+         <library>

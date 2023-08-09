@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="scores">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.43">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.48">
     <root id="1">
       <ServerVersion>3.40.1</ServerVersion>
     </root>
@@ -1423,78 +1423,5 @@
     <argument id="503" parent="172">
       <Position>1</Position>
     </argument>
-    <table id="504" parent="173" name="score"/>
-    <table id="505" parent="173" name="sqlite_master">
-      <System>1</System>
-    </table>
-    <column id="506" parent="504" name="id">
-      <DataType>INTEGER|0s</DataType>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-    </column>
-    <column id="507" parent="504" name="author">
-      <DataType>VARCHAR(100)|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="508" parent="504" name="summary_id">
-      <DataType>INTEGER|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="509" parent="504" name="detailed">
-      <DataType>INTEGER|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <column id="510" parent="504" name="creative">
-      <DataType>INTEGER|0s</DataType>
-      <Position>5</Position>
-    </column>
-    <column id="511" parent="504" name="specific">
-      <DataType>INTEGER|0s</DataType>
-      <Position>6</Position>
-    </column>
-    <column id="512" parent="504" name="prevention">
-      <DataType>INTEGER|0s</DataType>
-      <Position>7</Position>
-    </column>
-    <column id="513" parent="504" name="detection">
-      <DataType>INTEGER|0s</DataType>
-      <Position>8</Position>
-    </column>
-    <column id="514" parent="504" name="societies">
-      <DataType>INTEGER|0s</DataType>
-      <Position>9</Position>
-    </column>
-    <column id="515" parent="504" name="involvement">
-      <DataType>INTEGER|0s</DataType>
-      <Position>10</Position>
-    </column>
-    <column id="516" parent="504" name="red_flags">
-      <DataType>INTEGER|0s</DataType>
-      <Position>11</Position>
-    </column>
-    <key id="517" parent="504">
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="518" parent="505" name="type">
-      <DataType>TEXT|0s</DataType>
-      <Position>1</Position>
-    </column>
-    <column id="519" parent="505" name="name">
-      <DataType>TEXT|0s</DataType>
-      <Position>2</Position>
-    </column>
-    <column id="520" parent="505" name="tbl_name">
-      <DataType>TEXT|0s</DataType>
-      <Position>3</Position>
-    </column>
-    <column id="521" parent="505" name="rootpage">
-      <DataType>INT|0s</DataType>
-      <Position>4</Position>
-    </column>
-    <column id="522" parent="505" name="sql">
-      <DataType>TEXT|0s</DataType>
-      <Position>5</Position>
-    </column>
   </database-model>
 </dataSource>

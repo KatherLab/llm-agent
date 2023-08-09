@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import func
@@ -59,6 +61,8 @@ class Score(db.Model):
     creativity = db.Column(db.Integer)
     specificity = db.Column(db.Integer)
     feasibility = db.Column(db.Integer)
+    red_flags = db.Column(db.Integer)
+    timestamp = db.Column(db.DateTime, default=func.now())
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -71,8 +75,11 @@ def index():
         creativity = request.form.get('creativity')
         specificity = request.form.get('specificity')
         feasibility = request.form.get('feasibility')
+        red_flags = request.form.get('red_flags')
+        # record the timestamp
+        timestamp = datetime.now()
         new_score = Score(author=author, summary_id=summary_id, accuracy=accuracy, relevance=relevance, creativity=creativity,
-                          specificity=specificity, feasibility=feasibility)
+                          specificity=specificity, feasibility=feasibility, red_flags=red_flags, timestamp=timestamp)
         db.session.add(new_score)
         db.session.commit()
 

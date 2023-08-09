@@ -5,7 +5,7 @@ from utils import *
 
 def cot(method, question, output_dir, task_index, repetition_index):
     global method_name
-    LLM_MODEL = "gpt3"
+    LLM_MODEL = "gpt-4"
     args = parse_arguments()
     decoder = Decoder()
 
@@ -26,7 +26,7 @@ def cot(method, question, output_dir, task_index, repetition_index):
     elif method == "manual_cot":
         method_name = "manual-cot"
 
-    txt_path = os.path.join(output_dir, f"cot-{LLM_MODEL}-{method_name}/cot-{LLM_MODEL}-{method_name}_trunc-0_{task_index}_{repetition_index}.txt")
+    txt_path = os.path.join(output_dir, f"cot-improved-{LLM_MODEL}-{method_name}/cot-{LLM_MODEL}-{method_name}_trunc-0_{task_index}_{repetition_index}.txt")
     txt_filename = txt_path
     sys.stdout = open(txt_filename, 'a', encoding='utf-8')
 
@@ -47,12 +47,12 @@ def cot(method, question, output_dir, task_index, repetition_index):
     else:
         raise ValueError("method is not properly defined ...")
 
-    print("Prompted Input:")
-    print(x.replace("\n\n", "\n").strip())
-    print('*****************************')
+    #print("Prompted Input:")
+    #print(x.replace("\n\n", "\n").strip())
+    #print('*****************************')
 
     max_length = args.max_length_cot if "cot" in args.method else args.max_length_direct
-    print(args)
+    #print(args)
     z = decoder.decode(args, x, max_length)
     z = z.replace("\n\n", "\n").replace("\n", "").strip()
     if args.method == "zero_shot_cot":
@@ -82,10 +82,10 @@ def parse_arguments():
         "--cot_trigger_no", type=int, default=1, help="A trigger sentence that elicits a model to execute chain of thought"
     )
     parser.add_argument(
-        "--max_length_cot", type=int, default=256, help="maximum length of output tokens by model for reasoning extraction"
+        "--max_length_cot", type=int, default=4096, help="maximum length of output tokens by model for reasoning extraction"
     )
     parser.add_argument(
-        "--max_length_direct", type=int, default=32, help="maximum length of output tokens by model for answer extraction"
+        "--max_length_direct", type=int, default=512, help="maximum length of output tokens by model for answer extraction"
     )
     parser.add_argument(
         "--limit_dataset_size", type=int, default=0, help="whether to limit test dataset size. if 0, the dataset size is unlimited and we use all the samples in the dataset for testing."
