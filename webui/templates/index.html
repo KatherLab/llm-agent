@@ -31,6 +31,28 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .info-button {
+            cursor: pointer;
+            padding: 5px 10px;
+            font-size: 16px;
+            border: none;
+            background-color: #ccc;
+        }
+
+        .info-popup {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .info-container:hover .info-popup {
+            display: block;
+        }
+
         select {
             width: 100%;
             height: 40px;
@@ -94,31 +116,116 @@
 
     <div class="mb-3">
       <label for="accuracy" class="form-label"><strong>Factual accuracy</strong></label>
+
         <p>-How factually accurate is the output? Rate the accuracy from 1 to 10.</p>
+        <div class="info-container">
+        <button class="info-button">?</button>
+        <div class="info-popup">
+            Factual Accuracy:<br>
+1.	Completely inaccurate; no factual content present.<br>
+2.	Predominantly inaccurate with rare hints of valid information.<br>
+3.	Some portions are accurate, but they're overshadowed by misinformation.<br>
+4.	Contains a mix of accurate and inaccurate information; roughly even.<br>
+5.	Slightly more accurate than not, but still contains significant inaccuracies.<br>
+6.	Generally accurate with a few noticeable errors.<br>
+7.	Mostly accurate, minor errors present.<br>
+8.	Highly accurate with very minor oversights.<br>
+9.	Almost entirely accurate, with only rare and insignificant errors.<br>
+10.	Completely accurate; every detail is correct.<br>
+        </div>
+    </div>
       <input type="text" class="form-control" id="accuracy" placeholder="1-10" name="accuracy" min="1" max="10" value="10" required>
     </div>
 
     <div class="mb-3">
       <label for="relevance" class="form-label"><strong>Problem Solving / Relevance</strong></label>
         <p>-How well did the model solve the problem? Rate the problem solving ability from 1 to 10.</p>
+                <div class="info-container">
+        <button class="info-button">?</button>
+        <div class="info-popup">
+            Problem Solving / Relevance:<br>
+1.	No relevant content; doesn't address the problem at all.<br>
+2.	Barely touches on the problem but mostly off-topic.<br>
+3.	Some relevant points, but largely misses the main issue.<br>
+4.	A mix of relevant and irrelevant content.<br>
+5.	Marginally more relevant than not, but lacks depth.<br>
+6.	Generally addresses the problem, but with some oversights.<br>
+7.	Addresses the problem well, with only minor gaps.<br>
+8.	Provides a comprehensive solution with very few gaps.<br>
+9.	Almost entirely solves the problem, with only rare omissions.<br>
+10.	Perfectly addresses and solves the problem.<br>
+        </div>
+    </div>
+    </div>
       <input type="text" class="form-control" id="relevance" placeholder="1-10" name="relevance" min="1" max="10" value="10" required>
     </div>
 
     <div class="mb-3">
       <label for="creativity" class="form-label"><strong>Novelty / Creativity</strong></label>
         <p>-Assess the model's capacity for creativity and proposing novel or unconventional solutions from 1 to 10.</p>
+                <div class="info-container">
+        <button class="info-button">?</button>
+        <div class="info-popup">
+            Novelty / Creativity:<br>
+1.	No originality; completely generic or copied content.<br>
+2.	Very little original thought; mostly clichéd.<br>
+3.	Some hints of creativity, but largely conventional.<br>
+4.	Mix of conventional and creative ideas.<br>
+5.	Slightly more creative than conventional.<br>
+6.	Generally creative with some generic aspects.<br>
+7.	Predominantly creative and original.<br>
+8.	Highly creative with very minor conventional aspects.<br>
+9.	Almost entirely original and innovative.<br>
+10.	Completely novel and groundbreaking.<br>
+        </div>
+    </div>
+    </div>
       <input type="text" class="form-control" id="creativity" placeholder="1-10" name="creativity" min="1" max="10" value="10" required>
     </div>
 
     <div class="mb-3">
       <label for="specificity" class="form-label"><strong>Specificity</strong></label>
         <p>-Rate the level of detail from 1 to 10.</p>
+                <div class="info-container">
+        <button class="info-button">?</button>
+        <div class="info-popup">
+            Specificity:<br>
+1.	Entirely vague; no specific details provided.<br>
+2.	Very broad, with rare mentions of specifics.<br>
+3.	Some specific points, but overshadowed by vagueness.<br>
+4.	Equal mix of specific details and general statements.<br>
+5.	Marginally more specific than vague.<br>
+6.	Generally specific with some broad statements.<br>
+7.	Detailed in most parts, with minor omissions.<br>
+8.	Highly detailed with very minor generalizations.<br>
+9.	Almost entirely detailed with only rare omissions.<br>
+10.	Completely specific; every aspect is detailed.<br>
+        </div>
+    </div>
+    </div>
       <input type="text" class="form-control" id="specificity" placeholder="1-10" name="specificity" min="1" max="10" value="10" required>
     </div>
 
     <div class="mb-3">
       <label for="feasibility" class="form-label"><strong>Feasibility</strong></label>
         <p>-Rate from 1 to 10 how feasible the solution is in terms of available technologies, resources, tools, economic and/or legal feasibility.</p>
+                <div class="info-container">
+        <button class="info-button">?</button>
+        <div class="info-popup">
+            Feasibility:<br>
+1.	Completely infeasible; no grounding in reality.<br>
+2.	Very unlikely to be feasible with current means.<br>
+3.	Some hints of feasibility, but largely impractical.<br>
+4.	Mix of feasible and infeasible elements.<br>
+5.	Slightly more feasible than not, but significant challenges exist.<br>
+6.	Generally feasible, with some challenges.<br>
+7.	Likely feasible with minor challenges to address.<br>
+8.	Highly feasible with very minor issues.<br>
+9.	Almost entirely feasible with rare and minor challenges.<br>
+10.	Completely feasible; can be implemented immediately without issues.<br>
+        </div>
+    </div>
+    </div>
       <input type="text" class="form-control" id="feasibility" placeholder="1-10" name="feasibility" min="1" max="10" value="10" required>
     </div>
 
@@ -145,14 +252,22 @@
     </select><br>
     -->
     <label for="red_flags"><strong>Red flags</strong></label>
-    <p>-0: Statement correct</p>
-    <p>-1: Interesting/odd output(Mark for in-detail examination/discussion)</p>
-    <p>-2: Statement wrong(mentions evidence-less therapy or plainly wrong statements)</p>
+    <p>-Rate the level of red flags from 0 to 2.</p>
+                    <div class="info-container">
+        <button class="info-button">?</button>
+        <div class="info-popup">
+            0: Statement correct<br>
+            1: Interesting/odd output(Mark for in-detail examination/discussion)<br>
+            2: Statement wrong(mentions evidence-less therapy or plainly wrong statements)<br>
+        </div>
+    </div>
+
     <select id="red_flags" name="red_flags">
         <option value="0" selected>0</option>
         <option value="1" >1</option>
         <option value="2" >2</option>
     </select><br>
+
 
     <input type="submit" value="Submit">
 </form>
