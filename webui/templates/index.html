@@ -6,7 +6,7 @@
             font-family: Arial, sans-serif;
         }
         form {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         label {
@@ -60,6 +60,19 @@
             box-sizing: border-box;
             font-size: 16px;
         }
+
+        /* Additional styles for flexbox layout */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .left-section, .right-section {
+            flex: 0 0 48%; /* The elements will take up slightly less than half the space to account for any margins or padding */
+            box-sizing: border-box;
+            padding: 20px; /* Adding some padding for aesthetics */
+        }
     </style>
     <script>
     window.onload = function() {
@@ -85,6 +98,9 @@
 </head>
 <body>
 <form method="POST" onsubmit="saveAuthor()">
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left-section">
     <h2>Task</h2>
     <p>{{ summary.eu_prompt }}</p>
 
@@ -102,8 +118,9 @@
     <p><strong>Novelty:</strong> {{ summary.novelty }}</p>
     <p><strong>Feasibility:</strong> {{ summary.feasibility }}</p>
     <p><strong>Correctness:</strong> {{ summary.correctness }}</p>
-
-
+        </div>
+        <div class="right-section">
+            <input type="hidden" name="summary_id" value="{{ summary.id }}">
     <input type="hidden" name="summary_id" value="{{ summary.id }}">
     <label for="author">Author:</label><br>
         <select id="author" name="author" required>
@@ -158,7 +175,7 @@
     </div>
     </div>
       <input type="text" class="form-control" id="relevance" placeholder="1-10" name="relevance" min="1" max="10" value="10" required>
-    </div>
+
 
     <div class="mb-3">
       <label for="creativity" class="form-label"><strong>Novelty / Creativity</strong></label>
@@ -181,7 +198,7 @@
     </div>
     </div>
       <input type="text" class="form-control" id="creativity" placeholder="1-10" name="creativity" min="1" max="10" value="10" required>
-    </div>
+
 
     <div class="mb-3">
       <label for="specificity" class="form-label"><strong>Specificity</strong></label>
@@ -204,7 +221,6 @@
     </div>
     </div>
       <input type="text" class="form-control" id="specificity" placeholder="1-10" name="specificity" min="1" max="10" value="10" required>
-    </div>
 
     <div class="mb-3">
       <label for="feasibility" class="form-label"><strong>Feasibility</strong></label>
@@ -227,7 +243,6 @@
     </div>
     </div>
       <input type="text" class="form-control" id="feasibility" placeholder="1-10" name="feasibility" min="1" max="10" value="10" required>
-    </div>
 
    <!--
     <label for="prevention">Mentions primary prevention (0/1):</label><br>
@@ -267,8 +282,8 @@
         <option value="1" >1</option>
         <option value="2" >2</option>
     </select><br>
-
-
+    </div>
+    </div>
     <input type="submit" value="Submit">
 </form>
 </body>
