@@ -1,9 +1,11 @@
 import os
-import subprocess
+
 import openai
 import pandas as pd
+
+from config import csv_path, output_dir
 from utils import generate_evaluation
-from config import api_key, csv_path, output_dir
+
 scoring_model = "gpt-4"
 # Get the directory that the current script is in
 script_dir = os.path.dirname(os.path.realpath(__file__))
@@ -53,25 +55,27 @@ for file in txt_files:
     print(eu_prompt)
     print(discription)
     evaluation_prompt = f"""
-    I will give you the output of an AI model that was prompted to provide a hypothetical approach to solve a complex question. 
-    The objective objective it to {discription}. The initial prompt assigned to the AI model is {eu_prompt}.
-    Please summarize this output with the following columns: 
-    summary (content should be three concise sentences), 
-    main ideas (content should be three very short bullet points), 
-    main finding (content should be three very short bullet points), 
-    novelty (rate the novelty of this approach from 1 to 10), 
-    feasibility (rate the feasibility of this approach from 1 to 10), 
-    correctness (rate the factual correctness of the output from 1 to 10). 
-    Remember that the approach was hypothetical, i.e. the AI model did not actually perform any study. 
-    Do not suggest in your output that actual research was done, rather, emphasize the hypothetical idea. OK?
-    
-    Strictly format your output by following the format of rows: 
-    Summary: 
-    Main Ideas: 
-    Main Finding: 
-    Novelty: 
-    Feasibility: 
-    Correctness:
+        I will give you the output of an AI model that was prompted to provide a hypothetical approach to solve a complex question. The objective is the following: {discription}. The initial prompt assigned to the AI model is {eu_prompt}.
+        Please summarize this output with the following columns: 
+        Summary: (content should be a minimum of ten to a maximum of fifteen concise sentences. Always adhere to the demanded number of sentences.) 
+        Main ideas: (content should be three to four short bullet points) 
+        Remember that the approach was hypothetical, i.e. the AI model did not actually perform any study. Do not suggest in your output that actual research was done, rather, emphasize the hypothetical idea. Start your summary with “The AI model suggested to … “. Do not repeat the task in the summary. Do not judge the output but neutrally summarize it. Do not generate any ideas that are not in the original output, do not assume something that is not clearly stated in the output. At least briefly mention every aspect from the original output, do not assume that some statement is less relevant for the summary. Do not generate content. Only review the content I provide next.
+        After the neutral summary, you change your role from a neutral observer to a critical evaluator. Be critical, and use the whole range from 1 to 10, depending on the quality of the prompt, 10 being the optimal, perfect answer to the problem that you can imagine, and 1 being completely off-topic. Score the prompt from 1 to 10 for the following 5 categories, just by printing the number you would rate the prompt (e.g. "Factual accuracy: 8" or “Factual accuracy: 3”), taking into account these descriptions for the categories:  
+        Factual accuracy	How factually accurate is the output? Rate the accuracy from 1 to 10. 
+        Problem Solving / Relevance:	How well did the model solve the problem? Rate the problem solving ability from 1 to 10.
+        Novelty / Creativity	Assess the model's capacity for creativity and proposing novel or unconventional solutions from 1 to 10.
+        Specificity	Rate the level of detail from 1 to 10
+        Feasibility	Rate from 1 to 10 how feasible the solution is in terms of available technologies, resources, tools, economic and/or legal feasibility.
+        Strictly format your output by following the format below, do not add anything else to the output, maintain the exact formatting and don’t add additional empty lines. Don't give hints to the format of the initial output. Adhere to this format:
+        Summary: 
+        “place 10-15 sentences of summary here”
+        Main Ideas: 
+        “place 3-4 bullet points here”
+        Factual accuracy: “integer score”
+        Problem Solving / Relevance: “integer score”
+        Novelty / Creativity: “integer score”
+        Specificity: “integer score”
+Feasibility: “integer score”
     """
 
     evaluation = generate_evaluation(openai.api_key, scoring_model, evaluation_prompt, generated_text)
