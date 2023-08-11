@@ -59,7 +59,9 @@ def parse_md_file(file_path):
     return None
 
 def populate_db(folder_path, model, conn):
-    files = [f for f in os.listdir(folder_path) if f.endswith(".md")]
+    #files = [f for f in os.listdir(folder_path) if f.endswith(".md")] # include all files
+    files = [f for f in os.listdir(folder_path) if f.endswith(".md") and f.rsplit('_', 1)[-1] == '0.md'] # only include 0.md files, discard repititions
+
     for file in files:
         file_path = os.path.join(folder_path, file)
         summary_data = parse_md_file(file_path)
