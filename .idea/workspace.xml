@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="delete mds">
+    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="upload all last md results">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/215ccb8f-3ced-4b04-85b3-bdc8999306fd.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webui/GPT4_summaries.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webui/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/webui/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webui/gpt4_summaries_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/webui/gpt4_summaries_db.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webui/scores.db" beforeDir="false" afterPath="$PROJECT_DIR$/webui/scores.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webui/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webui/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +62,7 @@
       <workItem from="1691235621908" duration="291000" />
       <workItem from="1691236156565" duration="1564000" />
       <workItem from="1691659841654" duration="4567000" />
-      <workItem from="1691740230043" duration="5249000" />
+      <workItem from="1691740230043" duration="8652000" />
     </task>
     <task id="LOCAL-00001" summary="update generation and summerization">
       <option name="closed" value="true" />
@@ -110,7 +112,23 @@
       <option name="project" value="LOCAL" />
       <updated>1691741757822</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="push md parsing updates">
+      <option name="closed" value="true" />
+      <created>1691754556591</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1691754556591</updated>
+    </task>
+    <task id="LOCAL-00008" summary="upload all last md results">
+      <option name="closed" value="true" />
+      <created>1691754573614</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1691754573614</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -134,7 +152,9 @@
     <MESSAGE value="update helping info" />
     <MESSAGE value="update splitting" />
     <MESSAGE value="delete mds" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete mds" />
+    <MESSAGE value="push md parsing updates" />
+    <MESSAGE value="upload all last md results" />
+    <option name="LAST_COMMIT_MESSAGE" value="upload all last md results" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/llm_agent$babyagi.coverage" NAME="babyagi Coverage Results" MODIFIED="1689778713915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generator/agents/babyagi" />

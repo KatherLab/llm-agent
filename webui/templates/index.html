@@ -20,25 +20,36 @@
             box-sizing: border-box;
             font-size: 16px;
         }
+
         input[type="submit"] {
             margin-top: 20px;
-            height: 40px;
+            height: 60px; /* increased from 40px */
+            width: 200px; /* specify a width if you like, or use a percentage like 100% */
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
+            font-size: 20px; /* increased from default */
         }
         input[type="submit"]:hover {
             background-color: #45a049;
         }
         .info-button {
+            position: relative;
+
             cursor: pointer;
             padding: 5px 10px;
             font-size: 16px;
             border: none;
             background-color: #ccc;
+            top: 10px; /* Adjust this value as needed */
+
         }
 
+        .form-label, .info-container {
+            display: inline-block; /* Allow elements to sit side-by-side */
+            vertical-align: top; /* Aligns the tops of the label and info button */
+        }
         .info-popup {
             display: none;
             position: absolute;
@@ -53,6 +64,9 @@
             display: block;
         }
 
+        .info-container {
+            margin-left: 10px; /* Space between label and info button */
+        }
         select {
             width: 100%;
             height: 40px;
@@ -116,12 +130,11 @@
     <p><strong>Main Ideas:<br></strong> {{ summary.main_ideas|safe }}</p>
     <p><strong>Factual accuracy:</strong> {{ summary.accuracy }}</p>
     <p><strong>Problem Solving / Relevance:</strong> {{ summary.relevance }}</p>
-    <p><strong>Novelty / Creativity:</strong> {{ summary.creativity }}</p>
+            <p><strong>Novelty / Creativity:</strong> {{ summary.novelty }}</p>
     <p><strong>Specificity:</strong> {{ summary.specificity }}</p>
     <p><strong>Feasibility:</strong> {{ summary.feasibility }}</p>
 
-        </div>
-        <div class="right-section">
+
             <input type="hidden" name="summary_id" value="{{ summary.id }}">
     <input type="hidden" name="summary_id" value="{{ summary.id }}">
     <label for="author">Author:</label><br>
@@ -132,14 +145,16 @@
         <option value="Truhn">Truhn</option>
         <option value="Isabella">Isabella</option>
     </select><br>
-
+        </div>
+        <div class="right-section">
     <div class="mb-3">
+        <div>
       <label for="accuracy" class="form-label"><strong>Factual accuracy</strong></label>
-
-        <p>-How factually accurate is the output? Rate the accuracy from 1 to 10.</p>
         <div class="info-container">
-        <button class="info-button">?</button>
+            <button class="info-button" type="button" onclick="yourFunction()">?</button>
         <div class="info-popup">
+
+
             Factual Accuracy:<br>
 1.	Completely inaccurate; no factual content present.<br>
 2.	Predominantly inaccurate with rare hints of valid information.<br>
@@ -152,15 +167,17 @@
 9.	Almost entirely accurate, with only rare and insignificant errors.<br>
 10.	Completely accurate; every detail is correct.<br>
         </div>
+        </div>
+            <p>-How factually accurate is the output? Rate the accuracy from 1 to 10.</p>
     </div>
       <input type="text" class="form-control" id="accuracy" placeholder="1-10" name="accuracy" min="1" max="10" value="10" required>
     </div>
 
     <div class="mb-3">
       <label for="relevance" class="form-label"><strong>Problem Solving / Relevance</strong></label>
-        <p>-How well did the model solve the problem? Rate the problem solving ability from 1 to 10.</p>
+
                 <div class="info-container">
-        <button class="info-button">?</button>
+                    <button class="info-button" type="button" onclick="yourFunction()">?</button>
         <div class="info-popup">
             Problem Solving / Relevance:<br>
 1.	No relevant content; doesn't address the problem at all.<br>
@@ -175,15 +192,16 @@
 10.	Perfectly addresses and solves the problem.<br>
         </div>
     </div>
+        <p>-How well did the model solve the problem? Rate the problem solving ability from 1 to 10.</p>
     </div>
       <input type="text" class="form-control" id="relevance" placeholder="1-10" name="relevance" min="1" max="10" value="10" required>
 
 
     <div class="mb-3">
       <label for="creativity" class="form-label"><strong>Novelty / Creativity</strong></label>
-        <p>-Assess the model's capacity for creativity and proposing novel or unconventional solutions from 1 to 10.</p>
+
                 <div class="info-container">
-        <button class="info-button">?</button>
+                    <button class="info-button" type="button" onclick="yourFunction()">?</button>
         <div class="info-popup">
             Novelty / Creativity:<br>
 1.	No originality; completely generic or copied content.<br>
@@ -198,15 +216,15 @@
 10.	Completely novel and groundbreaking.<br>
         </div>
     </div>
+        <p>-Assess the model's capacity for creativity and proposing novel or unconventional solutions from 1 to 10.</p>
     </div>
       <input type="text" class="form-control" id="creativity" placeholder="1-10" name="creativity" min="1" max="10" value="10" required>
 
 
     <div class="mb-3">
       <label for="specificity" class="form-label"><strong>Specificity</strong></label>
-        <p>-Rate the level of detail from 1 to 10.</p>
                 <div class="info-container">
-        <button class="info-button">?</button>
+                    <button class="info-button" type="button" onclick="yourFunction()">?</button>
         <div class="info-popup">
             Specificity:<br>
 1.	Entirely vague; no specific details provided.<br>
@@ -221,14 +239,16 @@
 10.	Completely specific; every aspect is detailed.<br>
         </div>
     </div>
+        <p>-Rate the level of detail from 1 to 10.</p>
+
     </div>
       <input type="text" class="form-control" id="specificity" placeholder="1-10" name="specificity" min="1" max="10" value="10" required>
 
     <div class="mb-3">
       <label for="feasibility" class="form-label"><strong>Feasibility</strong></label>
-        <p>-Rate from 1 to 10 how feasible the solution is in terms of available technologies, resources, tools, economic and/or legal feasibility.</p>
+
                 <div class="info-container">
-        <button class="info-button">?</button>
+                    <button class="info-button" type="button" onclick="yourFunction()">?</button>
         <div class="info-popup">
             Feasibility:<br>
 1.	Completely infeasible; no grounding in reality.<br>
@@ -243,6 +263,8 @@
 10.	Completely feasible; can be implemented immediately without issues.<br>
         </div>
     </div>
+        <p>-Rate from 1 to 10 how feasible the solution is in terms of available technologies, resources, tools,
+            economic and/or legal feasibility.</p>
     </div>
       <input type="text" class="form-control" id="feasibility" placeholder="1-10" name="feasibility" min="1" max="10" value="10" required>
 
@@ -268,25 +290,28 @@
         <option value="1" selected>1</option>
     </select><br>
     -->
-    <label for="red_flags"><strong>Red flags</strong></label>
-    <p>-Rate the level of red flags from 0 to 2.</p>
-                    <div class="info-container">
-        <button class="info-button">?</button>
+            <div class="mb-3">
+    <label for="red_flags" class="form-label"><strong>Red flags</strong></label>
+                <div class="info-container">
+                    <button class="info-button" type="button" onclick="yourFunction()">?</button>
         <div class="info-popup">
             0: Statement correct<br>
             1: Interesting/odd output(Mark for in-detail examination/discussion)<br>
             2: Statement wrong(mentions evidence-less therapy or plainly wrong statements)<br>
         </div>
     </div>
-
+                <p>-Rate the level of red flags from 0 to 2.</p>
+            </div>
     <select id="red_flags" name="red_flags">
         <option value="0" selected>0</option>
         <option value="1" >1</option>
         <option value="2" >2</option>
     </select><br>
+
+                <input type="submit" value="Submit">
+
     </div>
     </div>
-    <input type="submit" value="Submit">
 </form>
 </body>
 </html>

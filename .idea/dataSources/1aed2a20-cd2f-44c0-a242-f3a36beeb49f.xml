@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="GPT4_summaries">
+<dataSource name="scores [2]">
   <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.49">
     <root id="1">
       <ServerVersion>3.40.1</ServerVersion>
@@ -432,8 +432,8 @@
     </routine>
     <schema id="173" parent="1" name="main">
       <Current>1</Current>
-      <IntrospectionTimestamp>2023-08-11.10:41:47.620</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-08-11.08:41:47</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-08-11.13:57:19.114</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-08-11.11:57:19</LocalIntrospectionTimestamp>
     </schema>
     <argument id="174" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1425,100 +1425,72 @@
     <argument id="503" parent="172">
       <Position>1</Position>
     </argument>
-    <table id="504" parent="173" name="Summaries"/>
+    <table id="504" parent="173" name="score"/>
     <table id="505" parent="173" name="sqlite_master">
       <System>1</System>
     </table>
     <column id="506" parent="504" name="id">
       <DasType>INTEGER|0s</DasType>
+      <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="507" parent="504" name="model">
-      <DasType>TEXT|0s</DasType>
+    <column id="507" parent="504" name="author">
+      <DasType>VARCHAR(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="508" parent="504" name="task_index">
-      <DasType>TEXT|0s</DasType>
+    <column id="508" parent="504" name="summary_id">
+      <DasType>INTEGER|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="509" parent="504" name="eu_prompt">
-      <DasType>TEXT|0s</DasType>
+    <column id="509" parent="504" name="accuracy">
+      <DasType>INTEGER|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="510" parent="504" name="repetition_index">
+    <column id="510" parent="504" name="relevance">
       <DasType>INTEGER|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="511" parent="504" name="truncation_index">
+    <column id="511" parent="504" name="creativity">
       <DasType>INTEGER|0s</DasType>
       <Position>6</Position>
     </column>
-    <column id="512" parent="504" name="table_index">
+    <column id="512" parent="504" name="specificity">
       <DasType>INTEGER|0s</DasType>
       <Position>7</Position>
     </column>
-    <column id="513" parent="504" name="file_path">
-      <DasType>TEXT|0s</DasType>
+    <column id="513" parent="504" name="feasibility">
+      <DasType>INTEGER|0s</DasType>
       <Position>8</Position>
     </column>
-    <column id="514" parent="504" name="summary">
-      <DasType>TEXT|0s</DasType>
+    <column id="514" parent="504" name="red_flags">
+      <DasType>INTEGER|0s</DasType>
       <Position>9</Position>
     </column>
-    <column id="515" parent="504" name="main_ideas">
-      <DasType>TEXT|0s</DasType>
+    <column id="515" parent="504" name="timestamp">
+      <DasType>DATETIME|0s</DasType>
       <Position>10</Position>
     </column>
-    <column id="516" parent="504" name="accuracy">
-      <DasType>INTEGER|0s</DasType>
-      <Position>11</Position>
-    </column>
-    <column id="517" parent="504" name="relevance">
-      <DasType>INTEGER|0s</DasType>
-      <Position>12</Position>
-    </column>
-    <column id="518" parent="504" name="novelty">
-      <DasType>INTEGER|0s</DasType>
-      <Position>13</Position>
-    </column>
-    <column id="519" parent="504" name="specificity">
-      <DasType>INTEGER|0s</DasType>
-      <Position>14</Position>
-    </column>
-    <column id="520" parent="504" name="feasibility">
-      <DasType>INTEGER|0s</DasType>
-      <Position>15</Position>
-    </column>
-    <index id="521" parent="504" name="sqlite_autoindex_Summaries_1">
-      <ColNames>summary</ColNames>
-      <NameSurrogate>1</NameSurrogate>
-      <Unique>1</Unique>
-    </index>
-    <key id="522" parent="504">
+    <key id="516" parent="504">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="523" parent="504">
-      <ColNames>summary</ColNames>
-      <UnderlyingIndexName>sqlite_autoindex_Summaries_1</UnderlyingIndexName>
-    </key>
-    <column id="524" parent="505" name="type">
+    <column id="517" parent="505" name="type">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="525" parent="505" name="name">
+    <column id="518" parent="505" name="name">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="526" parent="505" name="tbl_name">
+    <column id="519" parent="505" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="527" parent="505" name="rootpage">
+    <column id="520" parent="505" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="528" parent="505" name="sql">
+    <column id="521" parent="505" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>

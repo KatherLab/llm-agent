@@ -39,7 +39,7 @@ class Summary(db.Model):
     main_ideas = db.Column(db.Text)
     accuracy = db.Column(db.Integer)
     relevance = db.Column(db.Integer)
-    creativity = db.Column(db.Integer)
+    novelty = db.Column(db.Integer)
     specificity = db.Column(db.Integer)
     feasibility = db.Column(db.Integer)
 
@@ -97,7 +97,6 @@ def index():
                 return render_template('change_author.html')
             else:
                 summary.main_ideas = convert_to_html_bullets(summary.main_ideas)
-                summary.main_finding = convert_to_html_bullets(summary.main_finding)
                 return render_template('index.html', summary=summary, author=author)
         else:
             summary = Summary.query.order_by(func.random()).first()
@@ -106,7 +105,6 @@ def index():
                 return "No summary found in the database."
             else:
                 summary.main_ideas = convert_to_html_bullets(summary.main_ideas)
-                summary.main_finding = convert_to_html_bullets(summary.main_finding)
                 return render_template('index.html', summary=summary)
 
 @app.route('/change_author', methods=['POST'])
@@ -119,6 +117,7 @@ def change_author():
 
 
 if __name__ == '__main__':
+    # TODO: add arguments to the run command with port and debug options
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
