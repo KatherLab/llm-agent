@@ -7,7 +7,7 @@ This repository contains the codebase for the LLM-AGI Evaluation Platform. This 
 ### Preparation
 Clone the repo:
 ```shell
-git clone https://github.com/KatherLab/llm-agent.git
+git clone https://github.com/KatherLab/llm-agent.git && cd llm-agent
 ```
 
 If you are a project maintainer, follow steps from 0 to 5
