@@ -4,10 +4,25 @@
 This repository contains the codebase for the LLM-AGI Evaluation Platform. This platform is designed to generate, summarize, and evaluate results from various language learning models such as GPT3.5, GPT4, and Baby AGI. The evaluations are performed by human experts via a web interface.
 
 ## Getting Started
-If you are a project maintainer, follow steps from 1 to 5
+### Preparation
+Clone the repo:
+```shell
+git clone https://github.com/KatherLab/llm-agent.git
+```
+
+If you are a project maintainer, follow steps from 0 to 5
+
+Create and checkout to your own dev branch:
+```shell
+git checkout <dev_branchname>
+```
 
 If you are a human expert, you only need to follow steps 1, 2, 6, and 7.
 
+Checkout to the working branch:
+```shell
+git checkout exp_expert_eval
+```
 
 ### Prerequisites
 
@@ -20,7 +35,6 @@ Ensure that you have [Anaconda](https://www.anaconda.com/products/distribution) 
 
 
 1. Create and install the environment by running:
-
 ```shell
 conda env create -f condaenv.yml
 ```
