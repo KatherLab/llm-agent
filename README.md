@@ -4,72 +4,59 @@
 This repository contains the codebase for the LLM-AGI Evaluation Platform. This platform is designed to generate, summarize, and evaluate results from various language learning models such as GPT3.5, GPT4, and Baby AGI. The evaluations are performed by human experts via a web interface.
 
 ## Getting Started
-### Preparation
+
+### Prerequisites
 Clone the repo:
 ```shell
 git clone https://github.com/KatherLab/llm-agent.git && cd llm-agent
 ```
 
-If you are a project maintainer, follow steps from 0 to 5
+Follow the instructions in the [setup_env.md](setup_env.md) file to set up the environment.
+
+### Installation
+If you are a project maintainer:
 
 Create and checkout to your own dev branch:
 ```shell
 git checkout <dev_branchname>
 ```
 
-If you are a human expert, you only need to follow steps 1, 2, 6, and 7.
+If you are a human expert:
 
 Checkout to the working branch:
 ```shell
 git checkout exp_expert_eval
 ```
 
-### Prerequisites
+### Running the Code
+If you are a project maintainer, go through all the steps below.
 
-Ensure that you have [Anaconda](https://www.anaconda.com/products/distribution) installed on your system.
+If you are a human expert, you only need to follow steps 4 and 5.
 
-### Installation
 0. Put the openai api key in the `generator/API_KEY` file.
 ***Make sure not to push this file remotely.***
 ***This file has already been added to gitignore.***
 
-
-1. Create and install the environment by running:
-```shell
-conda env create -f condaenv.yml
-```
-
-2. Activate the environment:
-
-```shell
-conda activate llm-agent
-```
-
-### Running the Code
-
-
-3. Run `generate.py` to generate results from the language learning models:
-
+1. Run `generate.py` to generate results from the language learning models:
 ```shell
 python generator/generate.py
 ```
-
 The generated text files can be found in the `generator/results` directory.
 
-4. Generate summarized markdown files:
+2. Generate summarized markdown files:
 
 ```shell
 python generator/summarize.py
 ```
 
-5. Load the summaries into the local database:
+3. Load the summaries into the local database:
 
 ```shell
 python webui/gpt4_summaries_db.py
 ```
 
 
-6. Run the web application:
+4. Run the web application:
 
 ```shell
 python webui/app.py
@@ -77,7 +64,7 @@ python webui/app.py
 
 Then, access the application in your favourite browser by visiting `http://127.0.0.1:5000`.
 
-7. Commit and push updates to the database:
+5. Commit and push updates to the database:
 
 ```shell
 git add .
