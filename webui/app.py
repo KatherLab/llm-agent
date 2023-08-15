@@ -91,7 +91,10 @@ def index():
             evaluated_summaries = [score.summary_id for score in Score.query.filter_by(author=author).all()]
 
             # Get a summary not yet evaluated by this author (not in the Score table)
-            summary = Summary.query.filter(Summary.id.notin_(evaluated_summaries)).order_by(func.random()).first()
+            summary = (Summary.query
+                       .filter(Summary.id.notin_(evaluated_summaries))
+                       .order_by(Summary.task_index, func.random())
+                       .first())
 
             if summary is None:
                 return render_template('change_author.html')
