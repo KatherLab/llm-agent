@@ -4,24 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="dyke commit db">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webui/scores (1).db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webui/scores (2).db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webui/scores (3).db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webui/scores (4).db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webui/scores (5).db" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webui/scores_merged.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="update score table, merged">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_09_08_23,_14_56_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_09_08_23__14_56__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webui/scores.db" beforeDir="false" afterPath="$PROJECT_DIR$/webui/scores.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +55,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "git-widget-placeholder": "exp__expert__eval",
@@ -99,7 +91,7 @@
       <workItem from="1692797177600" duration="2181000" />
       <workItem from="1692803592512" duration="2924000" />
       <workItem from="1693471180796" duration="72000" />
-      <workItem from="1693471266366" duration="2016000" />
+      <workItem from="1693471266366" duration="3519000" />
     </task>
     <task id="LOCAL-00001" summary="update generation and summerization">
       <option name="closed" value="true" />
@@ -197,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692877415476</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="update score table, merged">
+      <option name="closed" value="true" />
+      <created>1693473499869</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1693473499869</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,7 +227,8 @@
     <MESSAGE value="add Dyke to author selection" />
     <MESSAGE value="hide gpt4 socres from webui" />
     <MESSAGE value="dyke commit db" />
-    <option name="LAST_COMMIT_MESSAGE" value="dyke commit db" />
+    <MESSAGE value="update score table, merged" />
+    <option name="LAST_COMMIT_MESSAGE" value="update score table, merged" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
