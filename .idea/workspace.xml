@@ -4,17 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="upload new results">
-      <change afterPath="$PROJECT_DIR$/setup_env.md" afterDir="false" />
+    <list default="true" id="19ab6c01-e610-4006-922a-28c6a1155f37" name="Changes" comment="dyke commit db">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/7cff5d51-24bb-46e5-9a73-ce62422b2a9c/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webui/scores (1).db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webui/scores (2).db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webui/scores (3).db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webui/scores (4).db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webui/scores (5).db" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webui/scores_merged.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1aed2a20-cd2f-44c0-a242-f3a36beeb49f/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48/storage_v2/_src_/schema/main.uQUzAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4b8f6a0a-bd24-47c9-a19b-80b39378af48/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_09_08_23,_14_56_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_09_08_23__14_56__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/condaenv.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/full_requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webui/scores.db" beforeDir="false" afterPath="$PROJECT_DIR$/webui/scores.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,14 +29,29 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubProjectSettings">
+    <option name="branchProtectionPatterns">
+      <list>
+        <option value="main" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/anaconda3/envs/llm-agent/lib/python3.8/site-packages/sqlalchemy/engine/default.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2TZ15XyAfnDJTgfv1A5C3YF2iwx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -38,19 +60,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "exp__expert__eval",
+    "last_opened_file_path": "/home/jeff/PycharmProjects/llm-agent/webui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/webui" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -64,6 +93,13 @@
       <workItem from="1691659841654" duration="4567000" />
       <workItem from="1691740230043" duration="5570000" />
       <workItem from="1692000497597" duration="1139000" />
+      <workItem from="1692713435944" duration="21000" />
+      <workItem from="1692713465263" duration="2024000" />
+      <workItem from="1692716760398" duration="2568000" />
+      <workItem from="1692797177600" duration="2181000" />
+      <workItem from="1692803592512" duration="2924000" />
+      <workItem from="1693471180796" duration="72000" />
+      <workItem from="1693471266366" duration="2016000" />
     </task>
     <task id="LOCAL-00001" summary="update generation and summerization">
       <option name="closed" value="true" />
@@ -129,7 +165,39 @@
       <option name="project" value="LOCAL" />
       <updated>1691754573614</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="minor update on md">
+      <option name="closed" value="true" />
+      <created>1692715483713</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1692715483713</updated>
+    </task>
+    <task id="LOCAL-00010" summary="add Dyke to author selection">
+      <option name="closed" value="true" />
+      <created>1692803637009</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1692803637009</updated>
+    </task>
+    <task id="LOCAL-00011" summary="hide gpt4 socres from webui">
+      <option name="closed" value="true" />
+      <created>1692806821852</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1692806821852</updated>
+    </task>
+    <task id="LOCAL-00012" summary="dyke commit db">
+      <option name="closed" value="true" />
+      <created>1692877415476</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1692877415476</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -155,7 +223,11 @@
     <MESSAGE value="delete mds" />
     <MESSAGE value="push md parsing updates" />
     <MESSAGE value="upload all last md results" />
-    <option name="LAST_COMMIT_MESSAGE" value="upload all last md results" />
+    <MESSAGE value="minor update on md" />
+    <MESSAGE value="add Dyke to author selection" />
+    <MESSAGE value="hide gpt4 socres from webui" />
+    <MESSAGE value="dyke commit db" />
+    <option name="LAST_COMMIT_MESSAGE" value="dyke commit db" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
