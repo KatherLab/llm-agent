@@ -25,7 +25,7 @@ If you are a human expert:
 
 Checkout to the working branch:
 ```shell
-git checkout exp_expert_eval
+git checkout <exp_branchname>
 ```
 
 ### Running the Code
@@ -67,7 +67,7 @@ Then, access the application in your favourite browser by visiting `http://127.0
 5. Commit and push updates to the database:
 
 ```shell
-git add .
+git add webui/scores.db
 git commit -m "Update database"
 git push
 ```
