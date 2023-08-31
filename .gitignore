@@ -10231,3 +10231,5 @@ plots/*.png
 /myenv/lib64/
 /myenv/pyvenv.cfg
 /generator/API_KEY
+/llm-agent/
+.idea/
