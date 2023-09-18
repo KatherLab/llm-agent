@@ -10,14 +10,77 @@
             </Attribute>
           </value>
         </entry>
-        <entry key="/score.csv">
+        <entry key="/visualization/heatmaps/eliminate_bias/10task.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
             </Attribute>
           </value>
         </entry>
-        <entry key="/summary.csv">
+        <entry key="/visualization/heatmaps/eliminate_bias/1task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/2task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/3task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/4task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/5task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/6task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/7task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/8task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/9task.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/visualization/heatmaps/eliminate_bias/task1.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
