@@ -1,6 +1,6 @@
 import os
 
-folder = 'swarm_original_score'
+folder = 'swarm_adjusted_score'
 svg_files = os.listdir(folder)
 print(svg_files)
 
@@ -15,5 +15,5 @@ for svg_file in svg_files:
     pdf_file = svg_file.replace('.svg', '.pdf')
     renderPDF.drawToFile(drawing, pdf_file)
     merger.append(pdf_file)
-merger.write("swarm_original_score.pdf")
+merger.write("swarm_adjusted_score.pdf")
 merger.close()
