@@ -1,0 +1,7 @@
+## Score table by gpt-4
+Score: 
+Factual accuracy: 8
+Problem Solving / Relevance: 8
+Novelty / Creativity: 9
+Specificity: 8
+Feasibility: 7
