@@ -74,10 +74,13 @@ def combined_plot_side_by_side(directory):
 
     # Initialize a single figure with 5 subplots
     fig, axes = plt.subplots(1, 5, figsize=(25, 6), sharey=True)
+    print()
+
 
     for i, category in enumerate(categories):
         sns.kdeplot(data=md_scores, x=category, ax=axes[i], label="MD Files", shade=True)
         sns.kdeplot(data=summaries_data, x=category, ax=axes[i], label="Summaries Table", shade=True)
+
         axes[i].set_title(f"{category.capitalize()} Scores")
         axes[i].set_xlabel(category.capitalize())
         if i == 0:  # Only set the ylabel for the first subplot to avoid repetition
@@ -125,7 +128,12 @@ def combined_violin_plot(directory):
     summaries_scores = summaries_data[
         ['model', 'accuracy', 'relevance', 'novelty', 'specificity', 'feasibility']].copy()
     summaries_scores["source"] = "GPT4 generated Summaries"
-
+    # print the difference between md_scores and summaries_data with statistics
+    print(md_scores.describe())
+    #save the difference between md_scores and summaries_data with statistics
+    md_scores.describe().to_csv('md_scores.csv')
+    print(summaries_scores.describe())
+    summaries_scores.describe().to_csv('summaries_scores.csv')
     combined_scores = pd.concat([md_scores, summaries_scores], ignore_index=True)
     combined_melted = combined_scores.melt(id_vars=['source', 'model'], value_vars=categories,
                                            var_name='category', value_name='score')

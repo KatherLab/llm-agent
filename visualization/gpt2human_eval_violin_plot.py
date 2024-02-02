@@ -4,10 +4,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Connect to databases and load data
-conn_summaries = sqlite3.connect('/path/to/GPT4_summaries.db')
+conn_summaries = sqlite3.connect('/home/jeff/PycharmProjects/llm-agent/webui/GPT4_summaries.db')
 summaries_data = pd.read_sql_query("SELECT * FROM Summaries", conn_summaries)
 
-conn_scores = sqlite3.connect('/path/to/scores.db')
+conn_scores = sqlite3.connect('/home/jeff/PycharmProjects/llm-agent/webui/scores.db')
 scores_data = pd.read_sql_query("SELECT * FROM score", conn_scores)
 
 # Merge the two datasets on summary_id

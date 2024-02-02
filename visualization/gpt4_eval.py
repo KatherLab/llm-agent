@@ -17,9 +17,9 @@ plt.figure(figsize=(18, 12))
 metrics = df.columns[1:]
 for i, metric in enumerate(metrics, 1):
     plt.subplot(2, 3, i)
-    sns.violinplot(x="model", y=metric, data=df, palette="tab10")
+    sns.violinplot(x="model", y=metric, data=df, palette="tab10",cut=0,inner="quartile", )#, min = 5, max = 10
     plt.title(metric.capitalize())
-
+    plt.ylim(6, 10)
 
     plt.xticks(rotation=45, ha='right')
 

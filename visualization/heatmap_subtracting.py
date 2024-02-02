@@ -1,33 +1,67 @@
+import sqlite3
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.pyplot as plt
 
-# Define the order of metrics
-metric_order = ['Accuracy', 'Relevance', 'Creativity', 'Spec', 'Feas']
+# Connect to the databases
+conn_summaries = sqlite3.connect('/home/jeff/PycharmProjects/llm-agent/webui/GPT4_summaries.db')
+conn_scores = sqlite3.connect('/home/jeff/PycharmProjects/llm-agent/webui/scores.db')
 
-# Load the CSV files for GPT-4 and human expert scores
-gpt4_scores = pd.read_csv('gpt4_scores.csv')
-expert_scores = pd.read_csv('expert_scores.csv')
+# Fetch the data from the 'Summaries' table
+summaries_data = pd.read_sql_query("SELECT * FROM Summaries", conn_summaries)
 
-# Merge the dataframes based on the model column
-merged_scores = pd.merge(gpt4_scores, expert_scores, on='Model', suffixes=('_gpt4', '_expert'))
+# Fetch the data from the 'score' table
+scores_data = pd.read_sql_query("SELECT * FROM score", conn_scores)
 
-# Create heatmaps for each metric
-for metric in metric_order:
-    # Calculate the difference between GPT-4 and expert scores
-    merged_scores[metric] = merged_scores[f'{metric}_gpt4'] - merged_scores[f'{metric}_expert']
+# Merge the tables on 'id' from Summaries and 'summary_id' from score
+merged_data = pd.merge(summaries_data, scores_data, left_on='id', right_on='summary_id')
 
-    # Sort the dataframe based on the order of models in the 'Accuracy' heatmap
-    if metric == 'Accuracy':
-        sorted_models = merged_scores[['Model', metric]].sort_values(by=metric)['Model']
+# Model renaming
+model_renames = {
+    "gpt-3.5-turbo": "gpt-3.5",
+    "cot-gpt-4-zero-shot-cot": "cot-zero",
+    "cot-gpt-4-manual-cot": "cot-manual",
+    "llama-2-7b-chat": "llama2",
+    "camel-gpt4": "camel",
+    "babyagi-gpt-4": "babyagi"
+}
+merged_data['model'] = merged_data['model'].replace(model_renames)
 
-    # Create a heatmap
-    plt.figure(figsize=(12, 6))
-    sns.heatmap(merged_scores.pivot('Model', metric, metric), annot=True, fmt=".2f", cmap="coolwarm")
-    plt.title(f'{metric} Heatmap')
+# Subtract the human expert score from the GPT-4 score for each category
+merged_data['accuracy_diff'] = merged_data['accuracy_x'] - merged_data['accuracy_y']
+merged_data['relevance_diff'] = merged_data['relevance_x'] - merged_data['relevance_y']
+merged_data['creativity_diff'] = merged_data['novelty'] - merged_data['creativity']
+merged_data['specificity_diff'] = merged_data['specificity_x'] - merged_data['specificity_y']
+merged_data['feasibility_diff'] = merged_data['feasibility_x'] - merged_data['feasibility_y']
 
-    # Save the heatmap as an image
-    plt.savefig(f'{metric}_heatmap.png')
+# Selecting only the necessary columns for the heatmap
+heatmap_data = merged_data[['model', 'accuracy_diff', 'relevance_diff', 'creativity_diff', 'specificity_diff', 'feasibility_diff']]
 
-# Show the heatmaps
+# Aggregate the data by taking the mean of the score differences for each model
+heatmap_agg = heatmap_data.groupby('model').mean().reset_index()
+
+# Melt the aggregated data to prepare for pivoting
+pivot_data = heatmap_agg.melt(id_vars=['model'], var_name='category', value_name='score_difference')
+
+# Pivot the melted data for the heatmap
+pivot_table_agg = pivot_data.pivot(index='model', columns='category', values='score_difference')
+pivot_table_agg = pivot_table_agg[['accuracy_diff', 'relevance_diff', 'creativity_diff', 'specificity_diff', 'feasibility_diff']]  # ordering
+
+# Create a heatmap from the pivot table
+plt.figure(figsize=(10, 8))
+heatmap = sns.heatmap(pivot_table_agg, annot=True, fmt=".2f", cmap='Blues', vmin=0, vmax=5, linewidths=.5)
+
+# Set titles and labels
+#plt.title('Heatmap of Score Differences')
+plt.xlabel('Score Difference', fontsize=15, color='black', labelpad=15, fontweight='normal', fontname='DejaVu Sans')
+plt.ylabel('Model', fontsize=15, color='black', labelpad=15, fontweight='normal', fontname='DejaVu Sans')
+
+# Correcting the labels on the x-axis
+current_xticks = plt.gca().get_xticks()
+plt.xticks(current_xticks, labels=['Accuracy', 'Relevance', 'Creativity', 'Specificity', 'Feasibility'])
+
 plt.show()
+
+# Close database connections
+conn_summaries.close()
+conn_scores.close()

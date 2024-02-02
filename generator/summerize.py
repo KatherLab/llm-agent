@@ -75,7 +75,7 @@ for file in txt_files:
         Problem Solving / Relevance: “integer score”
         Novelty / Creativity: “integer score”
         Specificity: “integer score”
-Feasibility: “integer score”
+        Feasibility: “integer score”
     """
 
     evaluation = generate_evaluation(openai.api_key, scoring_model, evaluation_prompt, generated_text)
