@@ -59,11 +59,11 @@ categories = ['accuracy', 'relevance', 'novelty', 'specificity', 'feasibility']
 
 def combined_violin_plot_by_taskindex(directory):
     md_scores = updated_aggregate_scores(directory)
-    md_scores["source"] = "llm-agents plain output"
+    md_scores["source"] = "LLM-agents plain output"
 
     summaries_scores = summaries_data[
         ['task_index', 'model', 'accuracy', 'relevance', 'novelty', 'specificity', 'feasibility']].copy()
-    summaries_scores["source"] = "GPT4 generated Summaries"
+    summaries_scores["source"] = "GPT-4 generated Summaries"
     summaries_scores["task_index"] = summaries_scores["task_index"].astype(int)
 
     combined_scores = pd.concat([md_scores, summaries_scores], ignore_index=True)
@@ -73,41 +73,34 @@ def combined_violin_plot_by_taskindex(directory):
 
     plt.figure(figsize=(18, 8))
     sns.set(style="whitegrid", font_scale=2)  # Increase font scale
+
+    # Define color palette
+    colorblind_palette = sns.color_palette("colorblind")
+    palette = {"LLM-agents plain output": colorblind_palette[0], "GPT-4 generated Summaries": colorblind_palette[1]}
+
     ax = sns.violinplot(data=combined_melted, x="task_index", y="score", hue="source", split=True, inner="quartile",
-                        cut=0, palette="colorblind")  # Colorblind-friendly palette
+                        cut=0, palette=palette)  # Use custom palette
 
     # Customize plot elements
-    #ax.set_title("Comparison of Scores by Task Index")
     ax.set_xlabel("Task Index", fontsize=28, color='black', labelpad=20, fontweight='normal', fontname='Arial')
     ax.set_ylabel("Score", fontsize=28, color='black', labelpad=10, fontweight='normal', fontname='Arial')
     ax.set_xticklabels(sorted(combined_melted['task_index'].unique()))  # Order Task Index labels
-    plt.legend(title="Score Source", loc='lower right')  # Move legend to bottom right
 
-    print("GPT4 generated Summaries")
-    #print(summaries_scores)
-    print("llm-agents plain output")
-    #print(md_scores)
-    # calculate the p value for each task index
-    for task_index in combined_melted['task_index'].unique():
-        print("Task Index: " + str(task_index))
-        print("p value: " + str(stats.ttest_ind(combined_melted.loc[(combined_melted['source'] == 'GPT4 generated Summaries') & (combined_melted['task_index'] == task_index), 'score'],
-                                                 combined_melted.loc[(combined_melted['source'] == 'llm-agents plain output') & (combined_melted['task_index'] == task_index), 'score'])[1]))
-
-
-    # calculate a overall p value
-    print("Overall p value: " + str(stats.ttest_ind(combined_melted.loc[(combined_melted['source'] == 'GPT4 generated Summaries'), 'score'],
-                                                    combined_melted.loc[(combined_melted['source'] == 'llm-agents plain output'), 'score'])[1]))
+    # Move legend to bottom right and fix the order of the legend
+    handles, labels = ax.get_legend_handles_labels()
+    order = ['LLM-agents plain output', 'GPT-4 generated Summaries']
+    plt.legend([handles[labels.index(i)] for i in order], order, title="Score Source", loc='lower right', bbox_to_anchor=(1.0, 0.0))
     plt.tight_layout()
     plt.show()
 
 
 def combined_violin_plot_by_metric(directory):
     md_scores = updated_aggregate_scores(directory)
-    md_scores["source"] = "llm-agents plain output"
+    md_scores["source"] = "LLM-agents plain output"
 
     summaries_scores = summaries_data[
         ['task_index', 'model', 'accuracy', 'relevance', 'novelty', 'specificity', 'feasibility']].copy()
-    summaries_scores["source"] = "GPT4 generated Summaries"
+    summaries_scores["source"] = "GPT-4 generated Summaries"
     summaries_scores["task_index"] = summaries_scores["task_index"].astype(int)
 
     combined_scores = pd.concat([md_scores, summaries_scores], ignore_index=True)
@@ -125,8 +118,10 @@ def combined_violin_plot_by_metric(directory):
     ax.set_ylabel("Score", fontsize=28, color='black', labelpad=10, fontweight='normal', fontname='Arial')
     ax.set_xticklabels(
         [label.capitalize() for label in combined_melted['category'].unique()])  # Capitalize first letter
-    plt.legend(title="Score Source", loc='lower right')  # Move legend to bottom right
-
+    # Move legend to bottom right and fix the order of the legend
+    handles, labels = ax.get_legend_handles_labels()
+    order = ['LLM-agents plain output', 'GPT-4 generated Summaries']
+    plt.legend([handles[labels.index(i)] for i in order], order, title="Score Source", loc='lower right', bbox_to_anchor=(1.0, 0.0))
     # print the scores for gp4 and llm-agents
     print("GPT4 generated Summaries")
     #print(summaries_scores)

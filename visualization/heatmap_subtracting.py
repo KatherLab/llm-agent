@@ -1,4 +1,6 @@
 import sqlite3
+
+import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -48,17 +50,24 @@ pivot_table_agg = pivot_data.pivot(index='model', columns='category', values='sc
 pivot_table_agg = pivot_table_agg[['accuracy_diff', 'relevance_diff', 'creativity_diff', 'specificity_diff', 'feasibility_diff']]  # ordering
 
 # Create a heatmap from the pivot table
-plt.figure(figsize=(10, 8))
+plt.figure(figsize=(12, 8))
 heatmap = sns.heatmap(pivot_table_agg, annot=True, fmt=".2f", cmap='Blues', vmin=0, vmax=5, linewidths=.5)
+# Set an explicit and descriptive title
+plt.title('Differences in GPT-4 vs. Human Expert Ratings Across Models', fontsize=18, pad=20)
 
-# Set titles and labels
-#plt.title('Heatmap of Score Differences')
+# Set more descriptive axis labels
+plt.xlabel('Rating Categories', fontsize=15, color='black', labelpad=15, fontweight='normal', fontname='DejaVu Sans')
+plt.ylabel('LLM Model', fontsize=15, color='black', labelpad=15, fontweight='normal', fontname='DejaVu Sans')
+
+# Set x-axis labels directly with the names of the categories, ensuring clarity about what the scores represent
+categories = ['Accuracy ', 'Relevance ', 'Creativity ', 'Specificity ', 'Feasibility ']
+#plt.xticks(ticks=np.arange(len(categories)), labels=categories, ha="left")
 plt.xlabel('Score Difference', fontsize=15, color='black', labelpad=15, fontweight='normal', fontname='DejaVu Sans')
-plt.ylabel('Model', fontsize=15, color='black', labelpad=15, fontweight='normal', fontname='DejaVu Sans')
 
-# Correcting the labels on the x-axis
-current_xticks = plt.gca().get_xticks()
-plt.xticks(current_xticks, labels=['Accuracy', 'Relevance', 'Creativity', 'Specificity', 'Feasibility'])
+
+# Add a legend or a color bar label to clarify what the numbers mean
+heatmap.figure.colorbar(heatmap.collections[0]).set_label('Score Difference (GPT-4 - Human Expert)', rotation=270, labelpad=20)
+
 
 plt.show()
 
